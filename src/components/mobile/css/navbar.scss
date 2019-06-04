@@ -1,0 +1,141 @@
+.navbar {
+  overflow-y: hidden;
+  height: 5em;
+  width: 100vw;
+  background-color: white;
+  position: absolute;
+  bottom: 0;
+
+  .navItems {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+    a{
+      text-decoration: none;
+      color: black;
+      font-family: Quicksand, sans-serif;
+      font-weight: bold;
+    }
+  }
+  .navLinkHome{
+    li{
+      display: flex;
+      flex-direction: column;
+      background-image: url("../../../images/homepage_inactive.png");
+      background-size: 42px 42px;
+      background-position: top;
+      background-repeat: no-repeat;
+      padding-top: 40px;
+    }
+  }
+  .navLinkHomeActive{
+    li{
+      display: flex;
+      flex-direction: column;
+      background-image: url("../../../images/homepage_active.png");
+      background-size: 42px 42px;
+      background-position: top;
+      background-repeat: no-repeat;
+      padding-top: 40px;
+    }
+  }
+
+
+  .navLinkHelp{
+    li{
+      display: flex;
+      flex-direction: column;
+      background-image: url("../../../images/question_inactive.png");
+      background-size: 42px 42px;
+      background-position: top;
+      background-repeat: no-repeat;
+      padding-top: 40px;
+    }
+  }
+  .navLinkHelpActive{
+    li{
+      display: flex;
+      flex-direction: column;
+      background-image: url("../../../images/question_active.png");
+      background-size: 42px 42px;
+      background-position: top;
+      background-repeat: no-repeat;
+      padding-top: 40px;
+    }
+  }
+
+
+  .navLinkEarn{
+    li{
+      display: flex;
+      flex-direction: column;
+      background-image: url("../../../images/dollar-symbol_inactive.png");
+      background-size: 42px 42px;
+      background-position: top;
+      background-repeat: no-repeat;
+      padding-top: 40px;
+    }
+  }
+  .navLinkEarnActive{
+    li{
+      display: flex;
+      flex-direction: column;
+      background-image: url("../../../images/dollar-symbol_active.png");
+      background-size: 42px 42px;
+      background-position: top;
+      background-repeat: no-repeat;
+      padding-top: 40px;
+    }
+  }
+
+
+  .navLinkRedeem{
+    li{
+      display: flex;
+      flex-direction: column;
+      background-image: url("../../../images/giftbox_inactive.png");
+      background-size: 42px 42px;
+      background-position: top;
+      background-repeat: no-repeat;
+      padding-top: 40px;
+    }
+  }
+  .navLinkRedeemActive{
+    li{
+      display: flex;
+      flex-direction: column;
+      background-image: url("../../../images/giftbox_active.png");
+      background-size: 42px 42px;
+      background-position: top;
+      background-repeat: no-repeat;
+      padding-top: 40px;
+    }
+  }
+
+
+  .navLinkSocial{
+    li{
+      display: flex;
+      flex-direction: column;
+      background-image: url("../../../images/multiple-users-silhouette_inactive.png");
+      background-size: 42px 42px;
+      background-position: top;
+      background-repeat: no-repeat;
+      padding-top: 40px;
+    }
+  }
+  .navLinkSocialActive{
+    li{
+      display: flex;
+      flex-direction: column;
+      background-image: url("../../../images/multiple-users-silhouette_active.png");
+      background-size: 42px 42px;
+      background-position: top;
+      background-repeat: no-repeat;
+      padding-top: 40px;
+    }
+  }
+}

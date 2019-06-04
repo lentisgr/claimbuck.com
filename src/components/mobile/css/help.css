@@ -1,0 +1,28 @@
+.faqContainer {
+  overflow-y: scroll;
+  background-color: white;
+  color: #707070;
+  height: 68vh;
+  width: 346px;
+  margin-top: 1.5em;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px; }
+  .faqContainer .title {
+    margin-bottom: 1em; }
+    .faqContainer .title h1 {
+      font-size: 29px;
+      font-weight: lighter; }
+  .faqContainer .questionContainer {
+    margin: 1em 0 1em 0;
+    list-style: none;
+    padding-left: 25px;
+    padding-right: 25px; }
+    .faqContainer .questionContainer li {
+      text-align: left;
+      margin: 10px 0 10px 0; }
+      .faqContainer .questionContainer li span {
+        margin-left: 10px;
+        text-align: left; }
+
+/*# sourceMappingURL=help.css.map */

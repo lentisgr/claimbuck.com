@@ -1,0 +1,14 @@
+.offerContainer {
+  overflow-y: scroll;
+  height: calc((100vh - 174px) );
+  width: 100vw;
+  color: white;
+  background-color: rgba(0, 0, 0, 0); }
+  .offerContainer .offer {
+    margin: 1em auto 1em auto;
+    height: 192px;
+    width: 346px;
+    background-color: white;
+    border-radius: 10px; }
+
+/*# sourceMappingURL=earn.css.map */
