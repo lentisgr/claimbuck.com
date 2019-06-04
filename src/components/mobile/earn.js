@@ -17,6 +17,7 @@ const exampleFetch = async () => {
 
     today = yyyy + "-" + mm + "-" + dd;
 
+
     const response = await fetch(`https://newsapi.org/v2/top-headlines?country=us&from=2019-05-01&to=${today}&sortBy=publishedAt&apiKey=${apiKey}`);
     const data = await response.json();
 
