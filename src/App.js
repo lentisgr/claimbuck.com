@@ -9,6 +9,8 @@ import HelpMobile from './components/mobile/help';
 import EarnMobile from './components/mobile/earn';
 import RedeemMobile from './components/mobile/redeem';
 import SocialMobile from './components/mobile/social';
+import Navbar from './components/mobile/navbar';
+import Header from './components/mobile/header';
 //desktop import
 import HelloDesktop from './components/desktop/hello';
 //tablet import
@@ -21,14 +23,18 @@ function App() {
             <MediaQuery minDeviceWidth={350} maxDeviceWidth={600}>
                 <Router>
                     <Switch>
-                        <SwipeableRoutes>
-                            <Route path={'/'} exact={true} component={HomeMobile}/>
-                            <Route path={'/earn'} component={EarnMobile}/>
-                            <Route path={'/redeem'} component={RedeemMobile}/>
-                            <Route path={'/social'} component={SocialMobile}/>
-                            <Route path={'/help'} component={HelpMobile}/>
-                            <Route path={'/login'}/>
-                        </SwipeableRoutes>
+                        <div className="wrapper">
+                            <Header/>
+                            <SwipeableRoutes>
+                                <Route path={'/help'} component={HelpMobile}/>
+                                <Route path={'/'} exact={true} component={HomeMobile}/>
+                                <Route path={'/earn'} component={EarnMobile}/>
+                                <Route path={'/redeem'} component={RedeemMobile}/>
+                                <Route path={'/social'} component={SocialMobile}/>
+                                <Route path={'/login'}/>
+                            </SwipeableRoutes>
+                            <Navbar/>
+                        </div>
                     </Switch>
                 </Router>
             </MediaQuery>

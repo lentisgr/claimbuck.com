@@ -14,9 +14,6 @@ class Home extends React.Component {
     render() {
         return(
             <div className={'wrapper'}>
-               <div className="header">
-                   <img className={'headerLogo'} src={logo} alt=""/>
-               </div>
                 <div className="welcomeMessage">
                     Hey, {username} <br/> Welcome back!
                 </div>
@@ -46,7 +43,6 @@ class Home extends React.Component {
                     </div>
                 </div>
 
-                <Navbar/>
 
             </div>
         )

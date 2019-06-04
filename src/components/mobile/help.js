@@ -10,7 +10,6 @@ class Help extends React.Component {
     render() {
         return (
             <div className={'wrapper'} style={{backgroundColor: '#F6F6F6'}}>
-                <Header/>
 
                 <div className="faqContainer">
                     <div className="title">
@@ -28,14 +27,13 @@ class Help extends React.Component {
                         </ul>
 
                         <ul className={'questionContainer'}>
-                            <li>Q. <span></span></li>
-                            <li>A.</li>
+                            <li>Q. <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, non.</span></li>
+                            <li>A. <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos est incidunt neque repellat repellendus sint.</span></li>
                         </ul>
                     </div>
                 </div>
 
 
-                <Navbar/>
             </div>
 
 
