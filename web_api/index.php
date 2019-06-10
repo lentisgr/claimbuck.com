@@ -1,5 +1,7 @@
 <?php
 include ('page_functions/everyPage_functions/all_pages.php');
+include ('page_functions/login_functions/login_page.php');
+
 /*
  * This file acts as a router for all incoming API calls.
  * Firstly the request method gets detected and if there isn't a valid one, it throws a 'Method Not Allowed' code.
@@ -22,38 +24,59 @@ include ('page_functions/everyPage_functions/all_pages.php');
                 switch ($request) {
                     case 'userdata':
                         //This case gets the userdata from specific user and sends it back in a json object.
-                        echo json_encode(returnUserdata($username));
+                        echo returnUserdata($username);
+                        break;
+                    case 'allUserdata':
+                        //This case gets the userdata from all users and sends it back in a json object.
+                        echo returnAllUserdata($authtoken);
                         break;
                     case 'sessionCheck':
                         //Session logic
+                        echo userSessionCheck($username);
                         break;
                     default:
                         //Specified request not found
+                        echo "API call error: router request not found!";
                         http_response_code(404);
+                        break;
                 }
             } else {
+                echo "API call error: Authentication token invalid!";
                 http_response_code(403);
             }
         } else {
+            echo "API call error: http header not filled in properly!";
             http_response_code(403);
         }
+
     } elseif ($_SERVER['REQUEST_METHOD'] == "POST") {
         $authtoken = $_POST['auth_token'];
         $username = $_POST['username'];
         $request = $_POST['request'];
+        //login
+        $password = $_POST['password'];
+        //lost password
+        $lost_pass_email = $_POST['lost_pass_email'];
 
-        if(!empty($_POST['auth_token'])&&!empty($_POST['username'])&&!empty($_POST['request'])) {
-            if(verifyAuth($_GET['username'],$_GET['auth_token'])) {
-
+        if(!empty($authtoken)&&!empty($username)&&!empty($request)) {
+            if(verifyAuth($username,$authtoken)) {
+                switch ($request) {
+                    case 'login':
+                        //This route tries to log the user in and returns false/true based on the result.
+                        echo (userLogin($username,$password));
+                        break;
+                }
                 //POST methods
-
             } else {
+                echo "API call error: Authentication token invalid!";
                 http_response_code(403);
             }
         } else {
+            echo "API call error: http header not filled in properly!";
             http_response_code(403);
         }
     } else {
+        echo "API call error: Request method not allowed. Use GET or POST instead!";
         http_response_code(405);
     }
 ?>
