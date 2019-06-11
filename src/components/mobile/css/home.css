@@ -3,21 +3,25 @@
   height: 100vh;
   max-height: 100vh;
   background-color: #15DCF3;
-  overflow-y: hidden; }
+  overflow-y: hidden;
+}
 
 .header {
   background-color: white;
   height: 50px;
-  box-shadow: -1px 3px 5px 0px rgba(0, 0, 0, 0.5); }
-  .headerLogo {
-    width: 185px;
-    margin-top: -65px; }
+  box-shadow: -1px 3px 5px 0px rgba(0, 0, 0, 0.5);
+}
+.headerLogo {
+  width: 185px;
+  margin-top: -65px;
+}
 
 .welcomeMessage {
   margin: 2em 0 7.5vh 0;
   color: white;
   font-size: 2.2em;
-  font-weight: bold; }
+  font-weight: bold;
+}
 
 .insightsContainer {
   margin: auto auto;
@@ -30,42 +34,51 @@
 .insightsHeader h1 {
   font-size: 1.75em;
   font-weight: bold;
-  transform: translateY(1em); }
-  .insightsHeader h1 .icon {
-    margin-right: 5px; }
+  transform: translateY(1em);
+}
+.insightsHeader h1 .icon {
+  margin-right: 5px;
+}
 .insightsContent {
   display: grid;
   grid-template-columns: 1fr 79.2px;
-  width: 100%; }
+  width: 100%;
+}
 .insightsText ul {
   padding-left: 20px;
   font-weight: bold;
   font-size: 1.5em;
   list-style: none;
-  text-align: left; }
-  .insightsText ul li {
-    margin: 0.3em 0 0.3em 0; }
+  text-align: left;
+}
+.insightsText ul li {
+  margin: 0.3em 0 0.3em 0;
+}
 .insightsData {
   margin-top: 15px;
   transform: translateX(-20px);
   background-color: dimgray;
   border-radius: 30px;
-  height: 120px; }
-  .insightsData ul {
-    transform: translateY(-5px);
-    padding: 0;
-    font-weight: bold;
-    font-size: 1.1em;
-    list-style: none;
-    color: white; }
-    .insightsData ul li {
-      margin: 0.5em 0 0.5em 0; }
-    .insightsData ul .balance {
-      margin-top: -13px;
-      border-top-left-radius: 30px;
-      border-top-right-radius: 30px;
-      padding-top: 0.6em;
-      padding-bottom: 0.6em;
-      background-color: #0E6937; }
+  height: 120px;
+}
+.insightsData ul {
+  transform: translateY(-5px);
+  padding: 0;
+  font-weight: bold;
+  font-size: 1.1em;
+  list-style: none;
+  color: white;
+}
+.insightsData ul li {
+  margin: 0.5em 0 0.5em 0;
+}
+.insightsData ul .balance {
+  margin-top: -13px;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  padding-top: 0.6em;
+  padding-bottom: 0.6em;
+  background-color: #0E6937;
+}
 
 /*# sourceMappingURL=home.css.map */
