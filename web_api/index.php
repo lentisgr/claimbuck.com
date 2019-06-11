@@ -74,6 +74,7 @@ include ('page_functions/register_functions/register.php');
                 }
                 //POST methods
             } elseif ($request=='register'&&!empty($_POST['email'])) {
+                //This route registers the user and sends a verification email
                 echo (userRegister($username,$password,$_POST['email']));
             } else {
                 echo "API call error: Authentication token invalid!";
