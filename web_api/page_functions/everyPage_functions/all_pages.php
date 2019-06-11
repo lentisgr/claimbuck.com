@@ -2,7 +2,7 @@
 
 function verifyAuth($username,$authToken) {
     //Check if authentication token matches.
-    return true;
+    return false;
 }
 
 function returnUserdata($user) {

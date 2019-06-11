@@ -1,6 +1,7 @@
 <?php
 include ('page_functions/everyPage_functions/all_pages.php');
 include ('page_functions/login_functions/login_page.php');
+include ('page_functions/register_functions/register.php');
 
 /*
  * This file acts as a router for all incoming API calls.
@@ -14,11 +15,10 @@ include ('page_functions/login_functions/login_page.php');
  */
 
     if ($_SERVER['REQUEST_METHOD'] == "GET") {
-        $authtoken = $_GET['auth_token'];
-        $username = $_GET['username'];
-        $request = $_GET['request'];
-
-        if(!empty($authtoken)&&!empty($username)&&!empty($request)) {
+        if(!empty($_GET['auth_token'])&&!empty($_GET['username'])&&!empty($_GET['request'])) {
+            $authtoken = $_GET['auth_token'];
+            $username = $_GET['username'];
+            $request = $_GET['request'];
             if(verifyAuth($username,$authtoken)) {
                 //This switch checks what the request is that the API call gives (get user data, login, etc..)
                 switch ($request) {
@@ -50,15 +50,21 @@ include ('page_functions/login_functions/login_page.php');
         }
 
     } elseif ($_SERVER['REQUEST_METHOD'] == "POST") {
-        $authtoken = $_POST['auth_token'];
-        $username = $_POST['username'];
-        $request = $_POST['request'];
-        //login
-        $password = $_POST['password'];
-        //lost password
-        $lost_pass_email = $_POST['lost_pass_email'];
+        if(!empty($_POST['auth_token'])&&!empty($_POST['username'])&&!empty($_POST['request'])) {
+            $authtoken = $_POST['auth_token'];
+            $username = $_POST['username'];
+            $request = $_POST['request'];
 
-        if(!empty($authtoken)&&!empty($username)&&!empty($request)) {
+            //login
+            if(!empty($_POST['password'])) {
+                $password = $_POST['password'];
+            } else $password = '';
+
+            //lost password
+            if(!empty($_POST['lost_pass_email'])) {
+                $lost_pass_email = $_POST['lost_pass_email'];
+            } else $lost_pass_email = '';
+
             if(verifyAuth($username,$authtoken)) {
                 switch ($request) {
                     case 'login':
@@ -67,6 +73,8 @@ include ('page_functions/login_functions/login_page.php');
                         break;
                 }
                 //POST methods
+            } elseif ($request=='register'&&!empty($_POST['email'])) {
+                echo (userRegister($username,$password,$_POST['email']));
             } else {
                 echo "API call error: Authentication token invalid!";
                 http_response_code(403);
