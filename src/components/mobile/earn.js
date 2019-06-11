@@ -9,18 +9,11 @@ import './css/earn.css';
 
 
 const exampleFetch = async () => {
-    const apiKey = 'c09496cc7ea745a2a5b49032d546faf8';
-    var today = new Date();
-    var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-    var yyyy = today.getFullYear();
 
-    today = yyyy + "-" + mm + "-" + dd;
-
-    const response = await fetch(`https://newsapi.org/v2/top-headlines?country=us&from=${today}&to=${today}&sortBy=publishedAt&apiKey=${apiKey}`);
+    const response = await fetch(`claimbuck.com/web_api/index.php`, {
+        method: 'POST'
+    });
     const data = await response.json();
-
-    console.log(today);
     console.log(data);
 };
 

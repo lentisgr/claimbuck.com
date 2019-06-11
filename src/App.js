@@ -20,7 +20,7 @@ function App() {
     return (
         <div className="App">
             {/*Mobile*/}
-            <MediaQuery minDeviceWidth={350} maxDeviceWidth={600}>
+            <MediaQuery minDeviceWidth={300} maxDeviceWidth={600}>
                 <Router>
                     <Switch>
                         <div className="wrapper">
@@ -31,7 +31,7 @@ function App() {
                                 <Route path={'/earn'} component={EarnMobile}/>
                                 <Route path={'/redeem'} component={RedeemMobile}/>
                                 <Route path={'/social'} component={SocialMobile}/>
-                                <Route path={'/login'}/>
+                                {/*<Route path={'/login'}/>*/}
                             </SwipeableRoutes>
                             <Navbar/>
                         </div>

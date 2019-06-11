@@ -1,9 +1,10 @@
 .faqContainer {
   overflow-y: scroll;
+  scroll-behavior: smooth;
   background-color: white;
   color: #707070;
-  height: 68vh;
-  width: 346px;
+  height: calc(100% - (80px + 50px + 3em));
+  width: 90vw;
   margin-top: 1.5em;
   margin-left: auto;
   margin-right: auto;
@@ -14,7 +15,7 @@
       font-size: 29px;
       font-weight: lighter; }
   .faqContainer .questionContainer {
-    margin: 1em 0 1em 0;
+    margin: 3em 0 3em 0;
     list-style: none;
     padding-left: 25px;
     padding-right: 25px; }
