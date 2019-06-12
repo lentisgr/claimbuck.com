@@ -1,21 +1,6 @@
 import React from "react";
-import Navbar from './navbar.js';
-import Header from './header.js';
 import './css/earn.css';
 
-
-
-
-
-
-const exampleFetch = async () => {
-
-    const response = await fetch(`claimbuck.com/web_api/index.php`, {
-        method: 'POST'
-    });
-    const data = await response.json();
-    console.log(data);
-};
 
 
 class Earn extends React.Component {
@@ -25,7 +10,7 @@ class Earn extends React.Component {
 
                 <div className="offerContainer">
                     <div className="offer">
-                        <button onClick={exampleFetch}>Click me!</button>
+                        <button> Click me!</button>
                     </div>
 
                     <div className="offer">

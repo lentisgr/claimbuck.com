@@ -1,6 +1,4 @@
 import React from "react";
-import Navbar from './navbar.js';
-import Header from './header';
 import './css/help.css';
 
 

@@ -1,8 +1,6 @@
 import React from 'react'
 import './css/home.css'
-import {NavLink} from 'react-router-dom';
-import Navbar from './navbar.js'
-import Header from './header';
+
 
 //image import
 import logo from '../../images/image0.png';
