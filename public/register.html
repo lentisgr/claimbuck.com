@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="login.css">
-    <title>Login</title>
+    <link rel="stylesheet" href="css/register.css">
+    <title>Register</title>
 </head>
 <body>
 <div class="wrapper">
@@ -76,6 +76,8 @@
 
                     exampleFetch2()
 
+                    window.location = 'registerconfirm.html';
+
                 }
                 else{
                     error.innerHTML = 'Please enter a valid Email.';
@@ -89,7 +91,7 @@
             }
         }
         else{
-            error.innerHTML = 'Please fill in all required fields';
+            error.innerHTML = 'Please fill in all required fields.';
             email.style.borderColor = '#ff978c';
             passwordConfirm.style.borderColor = '#ff978c';
             password.style.borderColor = '#ff978c';
