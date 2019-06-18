@@ -1,9 +1,6 @@
 import React from 'react'
 import './css/home.css'
 
-
-//image import
-import logo from '../../images/image0.png';
 import insightIcon from '../../images/insight icon.svg';
 
 let username = 'XRaider';

@@ -61,4 +61,49 @@ body {
     .loginContainer a:visited {
       color: #707070; }
 
+.loginContainerDesktop {
+  padding: 20px 20px 0px 20px;
+  float: right;
+  width: 350px;
+  background-color: #E9E9E9;
+  border-bottom-left-radius: 30px;
+  box-shadow: -1px 3px 5px 0px rgba(0, 0, 0, 0.5); }
+  .loginContainerDesktop .button {
+    border-width: 1px;
+    border-style: solid;
+    border-right-style: none;
+    border-color: limegreen;
+    margin-bottom: 10px;
+    height: 35px;
+    width: 100%;
+    color: white;
+    font-weight: bold;
+    background-color: limegreen;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
+    display: flex; }
+    .loginContainerDesktop .button:hover {
+      cursor: pointer; }
+    .loginContainerDesktop .button p {
+      flex-grow: 1;
+      text-align: center;
+      margin-top: 0.8em;
+      font-size: 13px; }
+    .loginContainerDesktop .button img {
+      background-color: white;
+      width: 35px;
+      height: 35px; }
+  .loginContainerDesktop .abcRioButton {
+    width: 100% !important; }
+  .loginContainerDesktop a {
+    text-align: center;
+    color: #707070;
+    text-decoration: none; }
+
+@media screen and (min-width: 992px) {
+  .loginContainer {
+    display: none; } }
+@media screen and (max-width: 992px) {
+  .loginContainerDesktop {
+    display: none; } }
+
 /*# sourceMappingURL=landingpage.css.map */

@@ -19,7 +19,20 @@
 
     <div class="loginContainer">
 
-        <div class="button">
+        <div class="button" onclick="window.location = 'register.html'">
+            <div class="imageDiv"><img src="images/emailicon.png" alt=""></div>
+            <p>Login with Email</p>
+        </div>
+
+        <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+        <a href="register.html"><p>Don't have an account?<br>Click here.</p></a>
+
+
+    </div>
+
+    <div class="loginContainerDesktop">
+
+        <div class="button" onclick="window.location = 'register.html'">
             <div class="imageDiv"><img src="images/emailicon.png" alt=""></div>
             <p>Login with Email</p>
         </div>
