@@ -12,8 +12,10 @@ import SocialMobile from './components/mobile/social';
 import Navbar from './components/mobile/navbar';
 import Header from './components/mobile/header';
 //desktop import
+import helpDesktop from './components/desktop/help'
 import homeDesktop from './components/desktop/home';
 import NavbarDesktop from './components/desktop/navbarDesktop';
+import socialDesktop from './components/desktop/social'
 //tablet import
 import HelloTablet from './components/tablet/hello';
 
@@ -62,8 +64,8 @@ function App() {
                             <Route path={'/'} exact={true} component={homeDesktop}/>
                             <Route path={'/earn'}/>
                             <Route path={'/redeem'}/>
-                            <Route path={'/social'}/>
-                            <Route path={'/help'}/>
+                            <Route path={'/social'} component={socialDesktop}/>
+                            <Route path={'/help'} component={helpDesktop}/>
                             <Route path={'/login'}/>
                         </div>
                     </Switch>

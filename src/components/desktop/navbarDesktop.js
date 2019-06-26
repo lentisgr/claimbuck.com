@@ -8,7 +8,8 @@ class navbarDesktop extends React.Component {
         return (
             <div className="desktopNavbar">
                 <div className="logoContainer">
-                    <img className={'desktopNavbarLogo'} src={logo} alt=""/>
+                    <NavLink to={'/'}><img className={'desktopNavbarLogo'} src={logo} alt=""/></NavLink>
+
                 </div>
 
                 <ul className={'navItems'}>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="css/verify.css">
+    <meta charset="UTF-8">
+    <title>Verify</title>
+</head>
+<body>
+
+<div class="container">
+    <h1>verified!</h1>
+    <p>Your account has been verified, you can now login using the button below.</p>
+    <button onclick="window.location = 'login.html'">Login</button>
+</div>
+
+<script>
+    let url_string = window.location.href;
+    let url = new URL(url_string);
+    let token = url.searchParams.get(token);
+
+    const ajax = async () => fetch('https://claimbuck.com/web_api/index.php', {
+        method: 'POST',
+        headers: {
+            "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+        },
+        body: 'request=processVerification&ver_token=' + token
+    })
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            console.log(data);
+        });
+    ajax();
+</script>
+
+</body>
+</html>

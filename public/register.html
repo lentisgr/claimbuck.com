@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="css/register.css">
     <title>Register</title>
 </head>
@@ -49,48 +49,59 @@
     let error = document.getElementById('errorMessage');
 
     submit.addEventListener('click', () => {
-        if (email.value !== '' && username.value !== '' && password.value !== '' && passwordConfirm.value !== ''){
+        if (email.value !== '' && username.value !== '' && password.value !== '' && passwordConfirm.value !== '') {
             email.style.borderColor = 'white';
             passwordConfirm.style.borderColor = 'white';
             password.style.borderColor = 'white';
             username.style.borderColor = 'white';
             console.log('all filled in');
-            if (password.value == passwordConfirm.value){
+            if (password.value == passwordConfirm.value) {
                 console.log('password confirmed');
-                if (email.value.includes('@') && email.value.includes('.')){
+                if (email.value.includes('@') && email.value.includes('.')) {
                     console.log('Email Correct.');
-
-                    const exampleFetch2 = async () => fetch('https://mintrexo.com/web_api/index.php', {
+                    const exampleFetch2 = async () => fetch('https://claimbuck.com/web_api/index.php', {
                         method: 'POST',
                         headers: {
                             "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
                         },
                         body: 'request=register&username=' + username.value + '&password=' + password.value + '&email=' + email.value
                     })
-                        .then(function(response){
+                        .then(function (response) {
                             return response.json();
                         })
-                        .then(function(data){
-                            console.log(data)
+                        .then(function (data) {
+                            console.log(data);
+                            checkMessage(data);
                         });
+                    exampleFetch2();
 
-                    exampleFetch2()
+                    function checkMessage(data) {
+                        if (data.succeed === 'true') {
+                            window.location = 'registerconfirm.html';
+                        } else if (data.message === '3') {
+                            error.innerHTML = 'Email or username has already been used.';
+                            email.style.borderColor = '#ff978c';
+                            username.style.borderColor = '#ff978c';
+                        } else if (data.message === '1') {
+                            error.innerHTML = 'Email is not valid';
+                            email.style.borderColor = '#ff978c';
+                        } else if (data.message === '2') {
+                            error.innerHTML = 'Account already exists. Verification is pending, please check your email.';
+                            email.style.borderColor = '#ff978c';
+                            username.style.borderColor = '#ff978c';
+                        }
+                    }
 
-                    window.location = 'registerconfirm.html';
-
-                }
-                else{
+                } else {
                     error.innerHTML = 'Please enter a valid Email.';
                     email.style.borderColor = '#ff978c';
                 }
 
+            } else {
+                error.innerHTML = 'Passwords do not match.';
+                passwordConfirm.style.borderColor = '#ff978c';
             }
-            else {
-                   error.innerHTML = 'Passwords do not match.';
-                   passwordConfirm.style.borderColor = '#ff978c';
-            }
-        }
-        else{
+        } else {
             error.innerHTML = 'Please fill in all required fields.';
             email.style.borderColor = '#ff978c';
             passwordConfirm.style.borderColor = '#ff978c';
