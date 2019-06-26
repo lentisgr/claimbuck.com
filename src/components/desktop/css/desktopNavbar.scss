@@ -1,0 +1,161 @@
+.desktopNavbar {
+  display: flex;
+  background-color: white;
+  height: 94px;
+  box-shadow: -1px 3px 5px 0px rgba(0, 0, 0, 0.5);
+
+  .logoContainer{
+    width: 100%;
+  }
+
+  &Logo {
+    float: left;
+    width: 300px;
+    margin-top: -100px;
+  }
+
+  .navItems {
+    transform: translateY(-10px);
+    width: 100%;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+    a{
+      text-decoration: none;
+      color: black;
+      font-family: Quicksand, sans-serif;
+      font-weight: bold;
+    }
+  }
+  .navLinkHome{
+    li{
+      padding-bottom: 30px;
+      text-align: left;
+      width: 100px;
+      background-image: url("../../../images/homepage_inactive.png");
+      background-size: 42px 42px;
+      background-position: right;
+      background-repeat: no-repeat;
+      padding-top: 30px;
+    }
+  }
+  .navLinkHomeActive{
+    li{
+      padding-bottom: 30px;
+      text-align: left;
+      width: 100px;
+      background-image: url("../../../images/homepage_active.png");
+      background-size: 42px 42px;
+      background-position: right;
+      background-repeat: no-repeat;
+      padding-top: 30px;
+    }
+  }
+
+
+  .navLinkHelp{
+    li{
+      padding-bottom: 30px;
+      text-align: left;
+      width: 80px;
+      background-image: url("../../../images/question_inactive.png");
+      background-size: 42px 42px;
+      background-position: right;
+      background-repeat: no-repeat;
+      padding-top: 30px;
+    }
+  }
+  .navLinkHelpActive{
+    li{
+      padding-bottom: 30px;
+      text-align: left;
+      width: 80px;
+      background-image: url("../../../images/question_active.png");
+      background-size: 42px 42px;
+      background-position: right;
+      background-repeat: no-repeat;
+      padding-top: 30px;
+    }
+  }
+
+
+  .navLinkEarn{
+    li{
+      padding-bottom: 30px;
+      text-align: left;
+      width: 80px;
+      background-image: url("../../../images/dollar-symbol_inactive.png");
+      background-size: 42px 42px;
+      background-position: right;
+      background-repeat: no-repeat;
+      padding-top: 30px;
+    }
+  }
+  .navLinkEarnActive{
+    li{
+      padding-bottom: 30px;
+      text-align: left;
+      width: 80px;
+      background-image: url("../../../images/dollar-symbol_active.png");
+      background-size: 42px 42px;
+      background-position: right;
+      background-repeat: no-repeat;
+      padding-top: 30px;
+    }
+  }
+
+
+  .navLinkRedeem{
+    li{
+      padding-bottom: 30px;
+      text-align: left;
+      width: 120px;
+      background-image: url("../../../images/giftbox_inactive.png");
+      background-size: 42px 42px;
+      background-position: right;
+      background-repeat: no-repeat;
+      padding-top: 30px;
+    }
+  }
+  .navLinkRedeemActive{
+    li{
+      padding-bottom: 30px;
+      text-align: left;
+      width: 120px;
+      background-image: url("../../../images/giftbox_active.png");
+      background-size: 42px 42px;
+      background-position: right;
+      background-repeat: no-repeat;
+      padding-top: 30px;
+    }
+  }
+
+
+  .navLinkSocial{
+    li{
+      padding-bottom: 30px;
+      text-align: left;
+      width: 100px;
+      background-image: url("../../../images/multiple-users-silhouette_inactive.png");
+      background-size: 42px 42px;
+      background-position: right;
+      background-repeat: no-repeat;
+      padding-top: 30px;
+    }
+  }
+  .navLinkSocialActive{
+    li{
+      padding-bottom: 30px;
+      text-align: left;
+      width: 100px;
+      background-image: url("../../../images/multiple-users-silhouette_active.png");
+      background-size: 42px 42px;
+      background-position: right;
+      background-repeat: no-repeat;
+      padding-top: 30px;
+    }
+  }
+}

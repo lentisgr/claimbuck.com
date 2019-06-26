@@ -1,0 +1,92 @@
+.desktopContainer{
+  margin-top: 8em;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.desktopWelcomeMessage {
+  margin: 2em 0 7.5vh 0;
+  color: white;
+  font-size: 2.2em;
+  font-weight: bold;
+}
+
+.desktopInsights {
+  &Container {
+    padding-top: 100px;
+    padding-bottom: 100px;
+    height: calc(60vh - 200px);
+    margin: auto auto;
+    background-color: white;
+    color: black;
+    border-radius: 30px;
+    width: 35vw;
+    box-shadow: 2px 5px 5px 0px rgba(0, 0, 0, 0.5);
+  }
+
+  &Header {
+    h1 {
+      .icon {
+        margin-right: 5px;
+      }
+
+      font-size: 1.75em;
+      font-weight: bold;
+      transform: translateY(1em);
+    }
+  }
+
+  &Content {
+    display: grid;
+    grid-template-columns: 1fr 79.2px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+  }
+
+  &Text {
+    ul {
+      padding-left: 20px;
+      font-weight: bold;
+      font-size: 1.5em;
+      list-style: none;
+      text-align: left;
+
+      li {
+        margin: 2em 0 2em 0;
+      }
+    }
+  }
+
+  &Data {
+    margin-top: 40px;
+    transform: translateX(-20px);
+    background-color: dimgray;
+    border-radius: 30px;
+    height: 220px;
+
+    ul {
+      transform: translateY(-5px);
+      padding: 0;
+      font-weight: bold;
+      font-size: 1.1em;
+      list-style: none;
+      color: white;
+
+      li {
+        margin: 2.4em 0 2.5em 0;
+      }
+
+      .balance {
+        margin-top: -13px;
+        margin-bottom: 0px;
+        border-top-left-radius: 30px;
+        border-top-right-radius: 30px;
+        padding-top: 1em;
+        padding-bottom: 1em;
+        background-color: #0E6937;
+      }
+    }
+  }
+}
+

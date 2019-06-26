@@ -12,7 +12,8 @@ import SocialMobile from './components/mobile/social';
 import Navbar from './components/mobile/navbar';
 import Header from './components/mobile/header';
 //desktop import
-import HelloDesktop from './components/desktop/hello';
+import homeDesktop from './components/desktop/home';
+import NavbarDesktop from './components/desktop/navbarDesktop';
 //tablet import
 import HelloTablet from './components/tablet/hello';
 
@@ -56,12 +57,15 @@ function App() {
             <MediaQuery minDeviceWidth={992}>
                 <Router>
                     <Switch>
-                        <Route path={'/'} exact={true} component={HelloDesktop}/>
-                        <Route path={'/earn'}/>
-                        <Route path={'/redeem'}/>
-                        <Route path={'/social'}/>
-                        <Route path={'/help'}/>
-                        <Route path={'/login'}/>
+                        <div className="wrapper">
+                            <NavbarDesktop/>
+                            <Route path={'/'} exact={true} component={homeDesktop}/>
+                            <Route path={'/earn'}/>
+                            <Route path={'/redeem'}/>
+                            <Route path={'/social'}/>
+                            <Route path={'/help'}/>
+                            <Route path={'/login'}/>
+                        </div>
                     </Switch>
                 </Router>
             </MediaQuery>
