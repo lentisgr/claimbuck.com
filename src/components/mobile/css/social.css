@@ -6,18 +6,20 @@
   margin-top: 1.5em;
   margin-left: auto;
   margin-right: auto;
-  border-radius: 10px; }
-  .socialContainer .discordBanner {
-    width: 80vw;
-    height: 157px;
-    background-image: url("../../../images/discord.png");
-    background-color: #7489D8;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    border-radius: 10px;
-    transform: translateY(14.5px);
-    margin-left: auto;
-    margin-right: auto; }
+  border-radius: 10px;
+}
+.socialContainer .discordBanner {
+  width: 80vw;
+  height: 157px;
+  background-image: url("../../../images/discord.png");
+  background-color: #7489D8;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 10px;
+  transform: translateY(14.5px);
+  margin-left: auto;
+  margin-right: auto;
+}
 
 /*# sourceMappingURL=social.css.map */

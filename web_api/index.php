@@ -1,4 +1,7 @@
 <?php
+header("Access-Control-Allow-Origin: *");
+error_reporting(E_ALL);
+ini_set('display_errors', 'on');
 include ('page_functions/everyPage_functions/all_pages.php');
 include ('page_functions/login_functions/login_page.php');
 include ('page_functions/register_functions/register.php');
@@ -14,78 +17,89 @@ include ('page_functions/register_functions/register.php');
  * POST = 'I am sending some POST with information to the server.'
  */
 
-    if ($_SERVER['REQUEST_METHOD'] == "GET") {
-        if(!empty($_GET['auth_token'])&&!empty($_GET['username'])&&!empty($_GET['request'])) {
-            $authtoken = $_GET['auth_token'];
-            $username = $_GET['username'];
-            $request = $_GET['request'];
-            if(verifyAuth($username,$authtoken)) {
-                //This switch checks what the request is that the API call gives (get user data, login, etc..)
-                switch ($request) {
-                    case 'userdata':
-                        //This case gets the userdata from specific user and sends it back in a json object.
-                        echo returnUserdata($username);
-                        break;
-                    case 'allUserdata':
-                        //This case gets the userdata from all users and sends it back in a json object.
-                        echo returnAllUserdata($authtoken);
-                        break;
-                    case 'sessionCheck':
-                        //Session logic
-                        echo userSessionCheck($username);
-                        break;
-                    default:
-                        //Specified request not found
-                        echo "API call error: router request not found!";
-                        http_response_code(404);
-                        break;
-                }
-            } else {
-                echo "API call error: Authentication token invalid!";
-                http_response_code(403);
-            }
-        } else {
-            echo "API call error: http header not filled in properly!";
-            http_response_code(403);
-        }
-
-    } elseif ($_SERVER['REQUEST_METHOD'] == "POST") {
-        if(!empty($_POST['auth_token'])&&!empty($_POST['username'])&&!empty($_POST['request'])) {
-            $authtoken = $_POST['auth_token'];
-            $username = $_POST['username'];
+    if ($_SERVER['REQUEST_METHOD'] == "POST") {
+        if(!empty($_POST['request'])&&!empty($_POST['username'])) {
             $request = $_POST['request'];
+            $username = filter_var($_POST['username'],FILTER_SANITIZE_STRING);
+            //TODO switch request router
 
-            //login
-            if(!empty($_POST['password'])) {
-                $password = $_POST['password'];
-            } else $password = '';
+            if($request=='authVerify') {
+                if(!empty($_POST['auth_token'])) {
+                    $authtoken = $_POST['auth_token'];
+                    if(verifyAuth($username,$authtoken)) {
 
-            //lost password
-            if(!empty($_POST['lost_pass_email'])) {
-                $lost_pass_email = $_POST['lost_pass_email'];
-            } else $lost_pass_email = '';
-
-            if(verifyAuth($username,$authtoken)) {
-                switch ($request) {
-                    case 'login':
-                        //This route tries to log the user in and returns false/true based on the result.
-                        echo (userLogin($username,$password));
-                        break;
+                        switch ($request) {
+                            case 'addPoints':
+                                break;
+                        }
+                    } else {
+                        BadAuthToken();
+                    }
+                } else {
+                    BadHttpHeader(array('auth token'));
                 }
-                //POST methods
-            } elseif ($request=='register'&&!empty($_POST['email'])) {
-                //This route registers the user and sends a verification email
-                echo (userRegister($username,$password,$_POST['email']));
+
+            } elseif($request=='login') {
+                if(!empty($_POST['email'])&&!empty($_POST['password'])) {
+                    $password = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
+                    echo userLogin($username,$_POST['email'],$password);
+                } else {
+                    BadHttpHeader(array('email','password'));
+                }
+
+            } elseif($request=='register') {
+                if(!empty($_POST['password'])&&!empty($_POST['email'])) {
+                    $password = filter_var($_POST['password'],FILTER_SANITIZE_STRING);
+                    echo (userRegister($username,$password,$_POST['email']));
+                } else {
+                    BadHttpHeader(array('password','email'));
+                }
+
+            } elseif($request=='registerLoginGoogle') {
+                if(!empty($_POST['email'])) {
+                    $email = filter_var($_POST['email'],FILTER_SANITIZE_STRING);
+                    echo (userRegisterGoogle($username,$email));
+                } else {
+                    BadHttpHeader(array('email'));
+                }
+
+            } else if($request=='processVerification') {
+                if (!empty($_POST['ver_token'])) {
+                    echo (processVerification($_POST['ver_token']));
+                } else {
+                    BadHttpHeader(array('verification token'));
+                }
             } else {
-                echo "API call error: Authentication token invalid!";
-                http_response_code(403);
+                BadRouterRequest();
             }
         } else {
-            echo "API call error: http header not filled in properly!";
-            http_response_code(403);
+            BadHttpHeader(array('request','username'));
         }
     } else {
+        BadRequestMethod();
+    }
+
+    function BadAuthToken() {
+        echo "API call error: Authentication token invalid!";
+        http_response_code(403);
+    }
+    function BadHttpHeader($values) {
+        echo "API call error: http header not filled in: ";
+        foreach ($values as $value){echo ("'".$value."' ");}
+        http_response_code(403);
+    }
+    function BadRequestMethod() {
         echo "API call error: Request method not allowed. Use GET or POST instead!";
         http_response_code(405);
     }
+    function BadRouterRequest() {
+        echo "API call error: router request not found!";
+        http_response_code(404);
+    }
+
+    function BadEmail() {
+        echo "1";
+        http_response_code(403);
+    }
+
 ?>
