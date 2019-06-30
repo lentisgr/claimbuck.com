@@ -17,63 +17,67 @@ include ('page_functions/register_functions/register.php');
  * POST = 'I am sending some POST with information to the server.'
  */
 
+//TODO: clean up register method
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
-        if(!empty($_POST['request'])&&!empty($_POST['username'])) {
-            $request = $_POST['request'];
-            $username = filter_var($_POST['username'],FILTER_SANITIZE_STRING);
-            //TODO switch request router
+        if(!empty($_POST['request'])) {
+            if(!empty($_POST['username'])) {
+                $request = $_POST['request'];
+                $username = filter_var($_POST['username'],FILTER_SANITIZE_STRING);
+                //TODO switch request router
+                if($request=='authVerify') {
+                    if(!empty($_POST['auth_token'])) {
+                        $authtoken = $_POST['auth_token'];
+                        if(verifyAuth($username,$authtoken)) {
 
-            if($request=='authVerify') {
-                if(!empty($_POST['auth_token'])) {
-                    $authtoken = $_POST['auth_token'];
-                    if(verifyAuth($username,$authtoken)) {
-
-                        switch ($request) {
-                            case 'addPoints':
-                                break;
+                            switch ($request) {
+                                case 'addPoints':
+                                    break;
+                            }
+                        } else {
+                            BadAuthToken();
                         }
                     } else {
-                        BadAuthToken();
+                        BadHttpHeader(array('auth token'));
                     }
-                } else {
-                    BadHttpHeader(array('auth token'));
-                }
 
-            } elseif($request=='login') {
-                if(!empty($_POST['email'])&&!empty($_POST['password'])) {
-                    $password = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
-                    echo userLogin($username,$_POST['email'],$password);
-                } else {
-                    BadHttpHeader(array('email','password'));
-                }
+                } elseif($request=='login') {
+                    if(!empty($_POST['email'])&&!empty($_POST['password'])) {
+                        $password = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
+                        echo userLogin($_POST['email'],$password);
+                    } else {
+                        BadHttpHeader(array('email','password'));
+                    }
 
-            } elseif($request=='register') {
-                if(!empty($_POST['password'])&&!empty($_POST['email'])) {
-                    $password = filter_var($_POST['password'],FILTER_SANITIZE_STRING);
-                    echo (userRegister($username,$password,$_POST['email']));
-                } else {
-                    BadHttpHeader(array('password','email'));
-                }
+                } elseif($request=='register') {
+                    if(!empty($_POST['password'])&&!empty($_POST['email'])) {
+                        $password = filter_var($_POST['password'],FILTER_SANITIZE_STRING);
+                        echo (userRegister($username,$password,$_POST['email']));
+                    } else {
+                        BadHttpHeader(array('password','email'));
+                    }
 
-            } elseif($request=='registerLoginGoogle') {
-                if(!empty($_POST['email'])) {
-                    $email = filter_var($_POST['email'],FILTER_SANITIZE_STRING);
-                    echo (userRegisterGoogle($username,$email));
-                } else {
-                    BadHttpHeader(array('email'));
-                }
+                } elseif($request=='registerLoginGoogle') {
+                    if(!empty($_POST['email'])) {
+                        $email = filter_var($_POST['email'],FILTER_SANITIZE_STRING);
+                        echo (userRegisterGoogle($username,$email));
+                    } else {
+                        BadHttpHeader(array('email'));
+                    }
 
-            } else if($request=='processVerification') {
+                } else {
+                    BadRouterRequest();
+                }
+            } elseif($_POST['request']=='processVerification') {
                 if (!empty($_POST['ver_token'])) {
                     echo (processVerification($_POST['ver_token']));
                 } else {
                     BadHttpHeader(array('verification token'));
                 }
             } else {
-                BadRouterRequest();
+                BadHttpHeader(array('request','username'));
             }
         } else {
-            BadHttpHeader(array('request','username'));
+            BadHttpHeader(array('request'));
         }
     } else {
         BadRequestMethod();

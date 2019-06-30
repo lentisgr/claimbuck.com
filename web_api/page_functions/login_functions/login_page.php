@@ -1,9 +1,22 @@
 <?php
 
-function userLogin($username,$email,$password) {
+function userLogin($email,$password) {
     //Set cookie auth in user's pc.
-    setcookie('auth','testToken',time() + 60,'/','claimbuck.com', TRUE);
-    $json = array('succeed'=>'true','message'=>'OK');
+    $query = QB::table('users')->where('email', '=', $email);
+    $result = $query->first();
+    if($result==null){
+        $json = array('succeed'=>'false','message'=>'4');
+    } else {
+        if(password_verify($password,$result->password)) {
+            $json = array('succeed'=>'true','message'=>'OK');
+            ob_start();
+            setcookie('auth',$result->auth_token,time() + 1200,'/','claimbuck.com', TRUE);
+            ob_end_flush();
+        } else {
+            $json = array('succeed'=>'false','message'=>'5');
+        }
+    }
     return json_encode($json,JSON_FORCE_OBJECT);
 }
+
 ?>
