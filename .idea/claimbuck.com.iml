@@ -3,6 +3,7 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/web_api/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/web_api/vendor/phpmailer/phpmailer" />
       <excludeFolder url="file://$MODULE_DIR$/web_api/vendor/usmanhalalit/pixie" />
       <excludeFolder url="file://$MODULE_DIR$/web_api/vendor/usmanhalalit/viocon" />
     </content>
