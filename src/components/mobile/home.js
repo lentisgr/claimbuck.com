@@ -7,14 +7,11 @@ let username = 'XRaider';
 
 class Home extends React.Component {
     render() {
-        return(
+        return (
             <div className={'wrapper'}>
                 <div className="welcomeMessage">
                     Hey, {username} <br/> Welcome back!
                 </div>
-
-
-
 
                 <div className="insightsContainer">
                     <div className="insightsHeader">

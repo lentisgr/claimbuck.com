@@ -100,5 +100,7 @@ body {
     float: right;
     margin: 0.2em 0 1.5em 0;
     border-radius: 5px; }
+    .loginContainer input[type=button]:hover {
+      cursor: pointer; }
 
 /*# sourceMappingURL=register.css.map */
