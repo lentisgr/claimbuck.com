@@ -117,7 +117,7 @@ function emailLink($username){
         'verification_token' => $token
     );
     QB::table('verification')->insert($data);
-    return 'https://claimbuck.com/verify.php?request=processVerification&ver_token='.$token;
+    return 'https://claimbuck.com/verify.html?token='.$token;
 }
 
 function generateToken($length) {
