@@ -21,6 +21,7 @@ function getCookie(cname) {
 
 let cookieauthtoken = getCookie('cookieauthtoken');
 let cookieusername = getCookie('cookieusername');
+let accountInfo = 0;
 
 const getUserData = async () => fetch('https://claimbuck.com/web_api/index.php', {
     method: 'POST',
@@ -36,16 +37,18 @@ const getUserData = async () => fetch('https://claimbuck.com/web_api/index.php',
         console.log(data);
 
         accountInfo = data;
+
+        console.log(accountInfo);
     });
-
-
-
-let accountInfo;
 getUserData();
 
-
-
 console.log(accountInfo);
+
+
+
+
+
+
 
 
 class Home extends React.Component {
