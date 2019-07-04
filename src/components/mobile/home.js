@@ -3,14 +3,57 @@ import './css/home.css'
 
 import insightIcon from '../../images/insight icon.svg';
 
-let username = 'XRaider';
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) === ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) === 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
+let cookieauthtoken = getCookie('cookieauthtoken');
+let cookieusername = getCookie('cookieusername');
+
+const getUserData = async () => fetch('https://claimbuck.com/web_api/index.php', {
+    method: 'POST',
+    headers: {
+        "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+    },
+    body: 'request=userInfo&auth_token=' + 'vY6RiAxQoKHzdkZyEa2XLgIht7PcMGwlbu5qWN4Jp3jOVU1F' + '&username=' + 'ss'
+})
+    .then(function (response) {
+        return response.json();
+    })
+    .then(function (data) {
+        console.log(data);
+
+        accountInfo = data;
+    });
+
+
+
+let accountInfo;
+getUserData();
+
+
+
+console.log(accountInfo);
+
 
 class Home extends React.Component {
     render() {
         return (
             <div className={'wrapper'}>
                 <div className="welcomeMessage">
-                    Hey, {username} <br/> Welcome back!
+                    Hey, <br/> Welcome back!
                 </div>
 
                 <div className="insightsContainer">
@@ -27,7 +70,7 @@ class Home extends React.Component {
                         </div>
                         <div className="insightsData">
                             <ul>
-                                <li className={'balance'}>1000</li>
+                                <li className={'balance'}>{accountInfo.points}</li>
                                 <li>10</li>
                                 <li>10</li>
                             </ul>
