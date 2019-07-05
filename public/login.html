@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="css/register.css">
     <link rel="stylesheet" href="css/login.css">
     <title>Login</title>
@@ -67,6 +68,8 @@
                 } else if (data.message === '5') {
                     error.innerHTML = 'Password filled in is incorrect.';
                     password.style.borderColor = '#ff978c';
+                } else if (data.message === '6') {
+                    error.innerHTML = 'Please verify your e-mail to login.';
                 }
             }
 
