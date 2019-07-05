@@ -20,27 +20,12 @@ include ('page_functions/register_functions/register.php');
 //TODO: clean up register method
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
         if(!empty($_POST['request'])) {
+            $request = $_POST['request'];
             if(!empty($_POST['username'])) {
-                $request = $_POST['request'];
+
                 $username = filter_var($_POST['username'],FILTER_SANITIZE_STRING);
                 //TODO switch request router
-                if($request=='authVerify') {
-                    if(!empty($_POST['auth_token'])) {
-                        $authtoken = $_POST['auth_token'];
-                        if(verifyAuth($username,$authtoken)) {
-
-                            switch ($request) {
-                                case 'addPoints':
-                                    break;
-                            }
-                        } else {
-                            BadAuthToken();
-                        }
-                    } else {
-                        BadHttpHeader(array('auth token'));
-                    }
-
-                } elseif($request=='login') {
+                if($request=='login') {
                     if(!empty($_POST['email'])&&!empty($_POST['password'])) {
                         $password = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
                         echo userLogin($_POST['email'],$password);
@@ -64,6 +49,18 @@ include ('page_functions/register_functions/register.php');
                         BadHttpHeader(array('email'));
                     }
 
+                } elseif($request=='userInfo') {
+                    if(!empty($_POST['auth_token'])) {
+                        $json = verifyAuth($username,$_POST['auth_token']);
+                        $json2 = json_decode($json);
+                        if($json2->message=='OK') {
+                            echo (returnUserData($username));
+                        } else {
+                            echo $json;
+                        }
+                    } else {
+                        BadHttpHeader(array('auth token'));
+                    }
                 } else {
                     BadRouterRequest();
                 }
@@ -83,10 +80,6 @@ include ('page_functions/register_functions/register.php');
         BadRequestMethod();
     }
 
-    function BadAuthToken() {
-        echo "API call error: Authentication token invalid!";
-        http_response_code(403);
-    }
     function BadHttpHeader($values) {
         echo "API call error: http header not filled in: ";
         foreach ($values as $value){echo ("'".$value."' ");}
@@ -100,7 +93,6 @@ include ('page_functions/register_functions/register.php');
         echo "API call error: router request not found!";
         http_response_code(404);
     }
-
     function BadEmail() {
         echo "1";
         http_response_code(403);
