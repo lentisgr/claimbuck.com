@@ -4,13 +4,16 @@ body {
   font-family: Quicksand, sans-serif;
   width: 100vw;
   height: 100%;
-  background-color: #15DCF3; }
+  background-color: #15DCF3;
+}
 
 .required {
-  color: red; }
+  color: red;
+}
 
 .wrapper {
-  width: 100vw; }
+  width: 100vw;
+}
 
 .loginContainer {
   background-color: white;
@@ -24,83 +27,95 @@ body {
   max-width: 350px;
   padding: 20px 20px 60px 20px;
   border-radius: 10px;
-  box-shadow: 3px 3px 16px 0px rgba(0, 0, 0, 0.5); }
-  .loginContainer .email {
-    margin: 1em 0 1em 0;
-    display: flex;
-    flex-direction: column; }
-    .loginContainer .email input {
-      padding-left: 10px;
-      margin-top: 5px;
-      height: 2.5em;
-      background-color: #F6F6F6;
-      border-color: #f7f7f7;
-      border-radius: 5px;
-      border-style: solid;
-      box-shadow: inset 0.5px 0.5px 5px 0px rgba(0, 0, 0, 0.5); }
-    .loginContainer .email input:focus {
-      transform: scale(1.2);
-      transition: ease-in-out 0.1s; }
-  .loginContainer .username {
-    margin: 1em 0 1em 0;
-    display: flex;
-    flex-direction: column; }
-    .loginContainer .username input {
-      padding-left: 10px;
-      margin-top: 5px;
-      height: 2.5em;
-      background-color: #F6F6F6;
-      border-color: #f7f7f7;
-      border-radius: 5px;
-      border-style: solid;
-      box-shadow: inset 0.5px 0.5px 5px 0px rgba(0, 0, 0, 0.5); }
-    .loginContainer .username input:focus {
-      transform: scale(1.2);
-      transition: ease-in-out 0.1s; }
-  .loginContainer .password {
-    margin: 1em 0 1em 0;
-    display: flex;
-    flex-direction: column; }
-    .loginContainer .password input {
-      padding-left: 10px;
-      margin-top: 5px;
-      height: 2.5em;
-      background-color: #F6F6F6;
-      border-color: #f7f7f7;
-      border-radius: 5px;
-      border-style: solid;
-      box-shadow: inset 0.5px 0.5px 5px 0px rgba(0, 0, 0, 0.5); }
-    .loginContainer .password input:focus {
-      transform: scale(1.2);
-      transition: ease-in-out 0.1s; }
-  .loginContainer .passwordConfirm {
-    margin: 1em 0 1em 0;
-    display: flex;
-    flex-direction: column; }
-    .loginContainer .passwordConfirm input {
-      padding-left: 10px;
-      margin-top: 5px;
-      height: 2.5em;
-      background-color: #F6F6F6;
-      border-color: #f7f7f7;
-      border-radius: 5px;
-      border-style: solid;
-      box-shadow: inset 0.5px 0.5px 5px 0px rgba(0, 0, 0, 0.5); }
-    .loginContainer .passwordConfirm input:focus {
-      transform: scale(1.2);
-      transition: ease-in-out 0.1s; }
-  .loginContainer input[type=button] {
-    font-family: Quicksand, sans-serif;
-    font-weight: bold;
-    border-style: none;
-    color: white;
-    background-color: #2ECC71;
-    height: 40px;
-    width: 100px;
-    float: right;
-    margin: 0.2em 0 1.5em 0;
-    border-radius: 5px; }
-    .loginContainer input[type=button]:hover {
-      cursor: pointer; }
+  box-shadow: 3px 3px 16px 0px rgba(0, 0, 0, 0.5);
+}
+.loginContainer .email {
+  margin: 1em 0 1em 0;
+  display: flex;
+  flex-direction: column;
+}
+.loginContainer .email input {
+  padding-left: 10px;
+  margin-top: 5px;
+  height: 2.5em;
+  background-color: #F6F6F6;
+  border-color: #f7f7f7;
+  border-radius: 5px;
+  border-style: solid;
+  box-shadow: inset 0.5px 0.5px 5px 0px rgba(0, 0, 0, 0.5);
+}
+.loginContainer .email input:focus {
+  transform: scale(1.2);
+  transition: ease-in-out 0.1s;
+}
+.loginContainer .username {
+  margin: 1em 0 1em 0;
+  display: flex;
+  flex-direction: column;
+}
+.loginContainer .username input {
+  padding-left: 10px;
+  margin-top: 5px;
+  height: 2.5em;
+  background-color: #F6F6F6;
+  border-color: #f7f7f7;
+  border-radius: 5px;
+  border-style: solid;
+  box-shadow: inset 0.5px 0.5px 5px 0px rgba(0, 0, 0, 0.5);
+}
+.loginContainer .username input:focus {
+  transform: scale(1.2);
+  transition: ease-in-out 0.1s;
+}
+.loginContainer .password {
+  margin: 1em 0 1em 0;
+  display: flex;
+  flex-direction: column;
+}
+.loginContainer .password input {
+  padding-left: 10px;
+  margin-top: 5px;
+  height: 2.5em;
+  background-color: #F6F6F6;
+  border-color: #f7f7f7;
+  border-radius: 5px;
+  border-style: solid;
+  box-shadow: inset 0.5px 0.5px 5px 0px rgba(0, 0, 0, 0.5);
+}
+.loginContainer .password input:focus {
+  transform: scale(1.2);
+  transition: ease-in-out 0.1s;
+}
+.loginContainer .passwordConfirm {
+  margin: 1em 0 1em 0;
+  display: flex;
+  flex-direction: column;
+}
+.loginContainer .passwordConfirm input {
+  padding-left: 10px;
+  margin-top: 5px;
+  height: 2.5em;
+  background-color: #F6F6F6;
+  border-color: #f7f7f7;
+  border-radius: 5px;
+  border-style: solid;
+  box-shadow: inset 0.5px 0.5px 5px 0px rgba(0, 0, 0, 0.5);
+}
+.loginContainer .passwordConfirm input:focus {
+  transform: scale(1.2);
+  transition: ease-in-out 0.1s;
+}
+.loginContainer input[type=button] {
+  font-family: Quicksand, sans-serif;
+  font-weight: bold;
+  border-style: none;
+  color: white;
+  background-color: #2ECC71;
+  height: 40px;
+  width: 100px;
+  float: right;
+  margin: 0.2em 0 1.5em 0;
+  border-radius: 5px;
+}
 
 /*# sourceMappingURL=register.css.map */
