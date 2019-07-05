@@ -1,55 +1,39 @@
-import React from "react";
+import React, {useState} from "react";
 import './css/earn.css';
 
-// const testCall = async () => await fetch('https://api.adgatemedia.com/v2/offers?aff=63190&api_key=4040d7f03be1dee659e92e6cdc5c7643', {
-//     method: 'GET',
-//     headers: {
-//         "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
-//     }
-//
-// })
-//     .then(function (response) {
-//         return response.json();
-//     })
-//     .then(function (data) {
-//         console.log(data);
-//     });
-// testCall();
+const Earn = () => {
 
-class Earn extends React.Component {
+    const [wall, setWall] = useState('https://wall.adgaterewards.com/nqqYrw/jdWkfKAAkUZCkG8skR9nRGtJ37SgvGg4T5eJCngnkNZ2YAYHEY26qKTT6VnaXCwy');
 
+    const changeToWall_1 = function () {
+        setWall('https://wall.adgaterewards.com/nqqYrw/jdWkfKAAkUZCkG8skR9nRGtJ37SgvGg4T5eJCngnkNZ2YAYHEY26qKTT6VnaXCwy');
+    };
 
-    render() {
-        return (
-            <div className={'wrapper'}>
+    const changeToWall_2 = function () {
+        setWall('https://www.offertoro.com/ifr/show/19322/USER_ID/8063');
+    };
 
-                <div className="offerContainer">
-                    <div className="offer">
-                        <button> Click me!</button>
-                    </div>
+    return (
+        <div className={'wrapper'}>
 
-                    <div className="offer">
+            <nav role="navigation" className={'offerMenu'}>
+                <button id={'changeWall_1'} onClick={changeToWall_1}>
+                    Offerwall 1
+                </button>
+                <button id={'changeWall_2'} onClick={changeToWall_2}>
+                    Offerwall 2
+                </button>
+            </nav>
 
-                    </div>
-
-                    <div className="offer">
-
-                    </div>
-
-                    <div className="offer">
-
-                    </div>
-
-                    <div className="offer">
-
-                    </div>
-                </div>
-
+            <div className="offerContainer">
+                <iframe title={'offerwall1'} className={'offerwall1'} src={wall}> </iframe>
             </div>
 
+        </div>
 
-        )
-    }
-}
+
+    )
+};
+
 
 export default Earn;

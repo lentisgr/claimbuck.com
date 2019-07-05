@@ -1,9 +1,36 @@
+
+.offerMenu{
+  display: flex;
+  justify-content: space-evenly;
+  height: 40px;
+
+  background-color: rgb(246, 246, 246);;
+
+  button{
+    font-family: Quicksand, sans-serif;
+    font-weight: bold;
+    color: dimgray;
+    margin-top: auto;
+    margin-bottom: auto;
+    height: 30px;
+    padding: 5px 20px 5px 20px;
+    border-radius: 5px;
+    background-color: #0DDDF3;
+    border-style: none;
+  }
+}
+
 .offerContainer{
-  overflow-y: scroll;
-  height: calc((100vh - 130px) );
+  overflow: hidden;
+  height: calc((100vh - 170px) );
   width: 100vw  ;
   color: white;
   background-color: rgba(0,0,0,0);
+
+  .offerwall1{
+    height: 100%;
+    width: 100%;
+  }
 
   .offer{
     margin: 1em auto 1em auto;
