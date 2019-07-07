@@ -21,7 +21,7 @@ const Earn = () => {
 
     const username = getCookie('username');
 
-    const [wall, setWall] = useState('https://wall.adgaterewards.com/nqqYrw/jdWkfKAAkUZCkG8skR9nRGtJ37SgvGg4T5eJCngnkNZ2YAYHEY26qKTT6VnaXCwy');
+    const [wall, setWall] = useState('https://wall.adgaterewards.com/nqqYrw/' + 'ss');
 
     const changeToWall_1 = function () {
         setWall('https://wall.adgaterewards.com/nqqYrw/' + 'ss');
