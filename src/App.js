@@ -16,6 +16,7 @@ import helpDesktop from './components/desktop/help'
 import homeDesktop from './components/desktop/home';
 import NavbarDesktop from './components/desktop/navbarDesktop';
 import socialDesktop from './components/desktop/social'
+import earnDesktop from './components/desktop/earn';
 //tablet import
 import HelloTablet from './components/tablet/hello';
 
@@ -62,7 +63,7 @@ function App() {
                         <div className="wrapper">
                             <NavbarDesktop/>
                             <Route path={'/'} exact={true} component={homeDesktop}/>
-                            <Route path={'/earn'}/>
+                            <Route path={'/earn'} component={earnDesktop} />
                             <Route path={'/redeem'}/>
                             <Route path={'/social'} component={socialDesktop}/>
                             <Route path={'/help'} component={helpDesktop}/>
