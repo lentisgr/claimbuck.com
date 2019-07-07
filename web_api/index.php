@@ -5,6 +5,7 @@ ini_set('display_errors', 'on');
 include ('page_functions/everyPage_functions/all_pages.php');
 include ('page_functions/login_functions/login_page.php');
 include ('page_functions/register_functions/register.php');
+include ('page_functions/offerwall_functions/earn.php');
 
 /*
  * This file acts as a router for all incoming API calls.
@@ -76,6 +77,18 @@ include ('page_functions/register_functions/register.php');
         } else {
             BadHttpHeader(array('request'));
         }
+    } else if($_SERVER['REQUEST_METHOD']=='GET') {
+      if(!empty($_GET['request'])) {
+          if($_GET['request']=='postbackAdgate') {
+              if(!empty($_GET['tx_id'])&&!empty($_GET['user_id'])&&!empty($_GET['points'])&&!empty($_GET['usd_value'])&&!empty($_GET['offer_title'])) {
+
+              }
+          } else {
+              BadRouterRequest();
+          }
+      }  else {
+          BadHttpHeader(array('request'));
+      }
     } else {
         BadRequestMethod();
     }
