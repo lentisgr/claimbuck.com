@@ -1,12 +1,12 @@
 
-.offerMenu{
+.offerMenu {
   display: flex;
   justify-content: space-evenly;
   height: 60px;
 
   background-color: rgb(246, 246, 246);;
 
-  button{
+  button {
     font-family: Quicksand, sans-serif;
     font-weight: bold;
     color: dimgray;
@@ -20,19 +20,19 @@
   }
 }
 
-.offerContainer{
+.offerContainer {
   overflow: hidden;
-  height: calc((100vh - 190px) );
+  height: calc((100vh - 190px));
   width: 100vw;
   color: white;
-  background-color: rgba(0,0,0,0);
+  background-color: rgba(0, 0, 0, 0);
 
-  .offerwall1{
+  .offerwall1 {
     height: 100%;
     width: 100%;
   }
 
-  .offer{
+  .offer {
     margin: 1em auto 1em auto;
     height: 192px;
     width: 90vw;

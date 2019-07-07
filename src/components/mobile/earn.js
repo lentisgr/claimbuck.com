@@ -24,7 +24,7 @@ const Earn = () => {
     const [wall, setWall] = useState('https://wall.adgaterewards.com/nqqYrw/jdWkfKAAkUZCkG8skR9nRGtJ37SgvGg4T5eJCngnkNZ2YAYHEY26qKTT6VnaXCwy');
 
     const changeToWall_1 = function () {
-        setWall('https://wall.adgaterewards.com/nqqYrw/jdWkfKAAkUZCkG8skR9nRGtJ37SgvGg4T5eJCngnkNZ2YAYHEY26qKTT6VnaXCwy');
+        setWall('https://wall.adgaterewards.com/nqqYrw/' + 'ss');
     };
 
     const changeToWall_2 = function () {

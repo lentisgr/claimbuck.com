@@ -17,7 +17,7 @@
 
 .offerContainer {
   overflow: hidden;
-  height: calc((100vh - 190px) );
+  height: calc((100vh - 190px));
   width: 100vw;
   color: white;
   background-color: rgba(0, 0, 0, 0); }
