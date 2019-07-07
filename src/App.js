@@ -23,7 +23,7 @@ function App() {
     return (
         <div className="App">
             {/*Mobile*/}
-            <MediaQuery minDeviceWidth={300} maxDeviceWidth={600}>
+            <MediaQuery minDeviceWidth={300} maxDeviceWidth={992}>
                 <Router>
                     <Switch>
                         <div className="wrapper">
@@ -41,19 +41,19 @@ function App() {
                 </Router>
             </MediaQuery>
 
-            {/*Tablet*/}
-            <MediaQuery minDeviceWidth={600} maxDeviceWidth={992}>
-                <Router>
-                    <Switch>
-                        <Route path={'/'} exact={true} component={HelloTablet}/>
-                        <Route path={'/earn'}/>
-                        <Route path={'/redeem'}/>
-                        <Route path={'/social'}/>
-                        <Route path={'/help'}/>
-                        <Route path={'/login'}/>
-                    </Switch>
-                </Router>
-            </MediaQuery>
+            {/*/!*Tablet*!/*/}
+            {/*<MediaQuery minDeviceWidth={600} maxDeviceWidth={992}>*/}
+            {/*    <Router>*/}
+            {/*        <Switch>*/}
+            {/*            <Route path={'/'} exact={true} component={HelloTablet}/>*/}
+            {/*            <Route path={'/earn'}/>*/}
+            {/*            <Route path={'/redeem'}/>*/}
+            {/*            <Route path={'/social'}/>*/}
+            {/*            <Route path={'/help'}/>*/}
+            {/*            <Route path={'/login'}/>*/}
+            {/*        </Switch>*/}
+            {/*    </Router>*/}
+            {/*</MediaQuery>*/}
 
             {/*Desktop*/}
             <MediaQuery minDeviceWidth={992}>

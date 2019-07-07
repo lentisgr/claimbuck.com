@@ -3,6 +3,24 @@ import './css/earn.css';
 
 const Earn = () => {
 
+    function getCookie(cname) {
+        var name = cname + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) === ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) === 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+
+    const username = getCookie('username');
+
     const [wall, setWall] = useState('https://wall.adgaterewards.com/nqqYrw/jdWkfKAAkUZCkG8skR9nRGtJ37SgvGg4T5eJCngnkNZ2YAYHEY26qKTT6VnaXCwy');
 
     const changeToWall_1 = function () {
@@ -10,7 +28,7 @@ const Earn = () => {
     };
 
     const changeToWall_2 = function () {
-        setWall('https://www.offertoro.com/ifr/show/19322/USER_ID/8063');
+        setWall('https://www.offertoro.com/ifr/show/19322/' + 'ss' + '/8063');
     };
 
     return (
