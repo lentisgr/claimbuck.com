@@ -76,14 +76,13 @@ const Redeem = () => {
 
 
     return (
-        <div className="redeemWrapper">
+        <div className="redeemWrapperDesktop">
 
             <div className="balance">
                 <h2>Balance: <span>{accountInfo.points + 'p'}</span></h2>
             </div>
 
-
-            <div className="giftcardContainer">
+            <div className="giftcardGrid">
 
                 {/*voorbeeld*/}
                 <div className="giftcard">
@@ -115,7 +114,7 @@ const Redeem = () => {
                 </div>
 
 
-
+                {/*actual loop*/}
                 {giftcardData.map(giftcard => (
                     <div key={giftcard.title} className="giftcard">
                         <img className={'giftcardImg'} src={giftcard.thumbnail} alt=""/>
@@ -123,8 +122,11 @@ const Redeem = () => {
                             <p className={'giftcardTitle'}>{giftcard.title}</p><button className={'redeem'}>{giftcard.pointValue + 'p'}</button>
                         </div>
                     </div>
-                ))};
+                ))}
+
+
             </div>
+
 
 
         </div>

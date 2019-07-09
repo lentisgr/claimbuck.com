@@ -17,6 +17,10 @@
     border-radius: 5px;
     background-color: #0DDDF3;
     border-style: none;
+
+    &:hover{
+      cursor: pointer;
+    }
   }
 }
 

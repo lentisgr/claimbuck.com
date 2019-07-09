@@ -1,0 +1,94 @@
+.redeemWrapper{
+  margin-top: -2px;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  background-color: #0DDDF3;
+  color: #707070;
+  height: calc((100vh - 129px));
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+
+  .giftcardContainer{
+    margin-top: 5.5em;
+  }
+
+  .balance{
+    position: fixed;
+    background-color: #F6F6F6;
+    width: 100%;
+    height: 3.5em;
+
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+
+    h2{
+      transform: translateY(0.5em);
+      margin: 0;
+      span{
+        font-size: 0.8em;
+        margin-left: 20px;
+        padding: 10px 25px 10px 25px;
+        border-radius: 30px;
+        color: white;
+        background-color: #0E6937;
+      }
+    }
+  }
+
+  .giftcard {
+    padding: 10px;
+    margin: 1em auto 1em auto;
+    width: 90vw;
+    height: auto;
+    max-width: 400px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 7px 7px rgba(0, 0, 0, 0.1);
+
+    &Img{
+      width: 100%;
+      object-fit: cover;
+      max-width: 400px;
+      max-height: 250px;
+    }
+
+    .giftcardContent{
+      display: flex;
+    }
+
+    &Title{
+      flex-grow: 1;
+      margin-top: 10px;
+      margin-bottom: 5px;
+      font-size: 2em;
+      font-weight: bold;
+      text-align: left;
+    }
+    .redeem{
+      font-size: 1em;
+      align-self: flex-end;
+      margin-top: auto;
+      margin-bottom: auto;
+      border-radius: 10px;
+      border-style: none;
+      color: white;
+      background-color: royalblue;
+      width: 100px;
+      height: 40px;
+
+      &:hover{
+        cursor: pointer;
+        background-color: #1141d1;
+        box-shadow: 0 0 7px 7px rgba(17, 65, 209, 0.3);
+        transition: all ease-in-out 0.1s;
+      }
+    }
+
+   .modalContent{
+     width: 80vw;
+     height: 600px;
+     background-color: white;
+   }
+  }
+}

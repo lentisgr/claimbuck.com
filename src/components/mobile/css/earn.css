@@ -14,6 +14,8 @@
     border-radius: 5px;
     background-color: #0DDDF3;
     border-style: none; }
+    .offerMenu button:hover {
+      cursor: pointer; }
 
 .offerContainer {
   overflow: hidden;

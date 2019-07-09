@@ -1,12 +1,15 @@
 
 .offerMenu {
+  padding-left: 15px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   height: 60px;
 
   background-color: rgb(246, 246, 246);;
 
   button {
+    margin-right: 10px;
+    margin-left: 10px;
     font-family: Quicksand, sans-serif;
     font-weight: bold;
     color: dimgray;
@@ -17,6 +20,10 @@
     border-radius: 5px;
     background-color: #0DDDF3;
     border-style: none;
+
+    &:hover{
+      cursor: pointer;
+    }
   }
 }
 
