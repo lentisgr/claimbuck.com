@@ -1,12 +1,12 @@
-
 .offerMenu {
+  padding-left: 15px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   height: 60px;
-
-  background-color: rgb(246, 246, 246);;
-
-  button {
+  background-color: #f6f6f6; }
+  .offerMenu button {
+    margin-right: 10px;
+    margin-left: 10px;
     font-family: Quicksand, sans-serif;
     font-weight: bold;
     color: dimgray;
@@ -16,31 +16,24 @@
     padding: 5px 20px 5px 20px;
     border-radius: 5px;
     background-color: #0DDDF3;
-    border-style: none;
-
-    &:hover{
-      cursor: pointer;
-    }
-  }
-}
+    border-style: none; }
+    .offerMenu button:hover {
+      cursor: pointer; }
 
 .offerContainer {
   overflow: hidden;
-  height: calc((100vh - 190px));
+  height: calc((100vh - 154px));
   width: 100vw;
   color: white;
-  background-color: rgba(0, 0, 0, 0);
-
-  .offerwall1 {
+  background-color: rgba(0, 0, 0, 0); }
+  .offerContainer .offerwall1 {
     height: 100%;
-    width: 100%;
-  }
-
-  .offer {
+    width: 100%; }
+  .offerContainer .offer {
     margin: 1em auto 1em auto;
     height: 192px;
     width: 90vw;
     background-color: white;
-    border-radius: 10px;
-  }
-}
+    border-radius: 10px; }
+
+/*# sourceMappingURL=earn.css.map */

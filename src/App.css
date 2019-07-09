@@ -1,4 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
+html{
+  overflow-y: scroll; /* has to be scroll, not auto */
+  -webkit-overflow-scrolling: touch;
+}
 .App {
   text-align: center;
   font-family: Quicksand, sans-serif;
