@@ -2,33 +2,38 @@
   display: flex;
   justify-content: space-evenly;
   height: 60px;
-  background-color: #f6f6f6; }
-  .offerMenu button {
-    font-family: Quicksand, sans-serif;
-    font-weight: bold;
-    color: dimgray;
-    margin-top: auto;
-    margin-bottom: auto;
-    height: 40px;
-    padding: 5px 20px 5px 20px;
-    border-radius: 5px;
-    background-color: #0DDDF3;
-    border-style: none; }
+  background-color: #f6f6f6;
+}
+.offerMenu button {
+  font-family: Quicksand, sans-serif;
+  font-weight: bold;
+  color: dimgray;
+  margin-top: auto;
+  margin-bottom: auto;
+  height: 40px;
+  padding: 5px 20px 5px 20px;
+  border-radius: 5px;
+  background-color: #0DDDF3;
+  border-style: none;
+}
 
 .offerContainer {
   overflow: hidden;
   height: calc((100vh - 190px));
   width: 100vw;
   color: white;
-  background-color: rgba(0, 0, 0, 0); }
-  .offerContainer .offerwall1 {
-    height: 100%;
-    width: 100%; }
-  .offerContainer .offer {
-    margin: 1em auto 1em auto;
-    height: 192px;
-    width: 90vw;
-    background-color: white;
-    border-radius: 10px; }
+  background-color: rgba(0, 0, 0, 0);
+}
+.offerContainer .offerwall1 {
+  height: 100%;
+  width: 100%;
+}
+.offerContainer .offer {
+  margin: 1em auto 1em auto;
+  height: 192px;
+  width: 90vw;
+  background-color: white;
+  border-radius: 10px;
+}
 
 /*# sourceMappingURL=earn.css.map */

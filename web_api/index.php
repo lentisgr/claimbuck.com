@@ -81,7 +81,13 @@ include ('page_functions/offerwall_functions/earn.php');
       if(!empty($_GET['request'])) {
           if($_GET['request']=='postbackAdgate') {
               if(!empty($_GET['tx_id'])&&!empty($_GET['user_id'])&&!empty($_GET['points'])&&!empty($_GET['usd_value'])&&!empty($_GET['offer_title'])) {
-
+                  addPoints($_GET['user_id'],$_GET['points']);
+                  sendWebhook('Adgate',$_GET['user_id'],$_GET['points'],$_GET['tx_id'],$_GET['usd_value'],$_GET['offer_title']);
+              }
+          } else if($_GET['request']=='postbackOffertoro'){
+              if(!empty($_GET['tx_id'])&&!empty($_GET['user_id'])&&!empty($_GET['points'])&&!empty($_GET['usd_value'])&&!empty($_GET['offer_title'])) {
+                  addPoints($_GET['user_id'],$_GET['points']);
+                  sendWebhook('Offertoro',$_GET['user_id'],$_GET['points'],$_GET['tx_id'],$_GET['usd_value'],$_GET['offer_title']);
               }
           } else {
               BadRouterRequest();
