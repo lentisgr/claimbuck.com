@@ -2,8 +2,6 @@ import React, {useState, useEffect} from "react";
 import './css/redeem.css';
 
 
-
-
 const Redeem = () => {
 
     function getCookie(cname) {
@@ -26,9 +24,14 @@ const Redeem = () => {
     // let cookieauthtoken = getCookie('cookieauthtoken');
     // let cookieusername = getCookie('cookieusername');
     const [accountInfo, setAccountInfo] = useState([]);
+    const [giftcardData, setGiftcardData] = useState([]);
 
     useEffect(() => {
         getUserData()
+    }, []);
+
+    useEffect(() => {
+        getGiftcardData()
     }, []);
 
     const getUserData = async () => fetch('https://claimbuck.com/web_api/index.php', {
@@ -46,18 +49,6 @@ const Redeem = () => {
             setAccountInfo(data);
         });
 
-
-
-
-
-
-    const [giftcardData, setGiftcardData] = useState([]);
-
-    useEffect(() => {
-        getGiftcardData()
-    }, []);
-
-
     const getGiftcardData = async () => fetch('https://claimbuck.com/web_api/index.php', {
         method: 'POST',
         headers: {
@@ -74,7 +65,6 @@ const Redeem = () => {
         });
 
 
-
     return (
         <div className="redeemWrapperDesktop">
 
@@ -86,30 +76,42 @@ const Redeem = () => {
 
                 {/*voorbeeld*/}
                 <div className="giftcard">
-                    <img className={'giftcardImg'} src={/*giftcard.thumbnail*/ 'https://www.pcgamesupply.com/media/assets/images/MobileGroupImages/Amazon.png'} alt=""/>
+                    <img className={'giftcardImg'}
+                         src={/*giftcard.thumbnail*/ 'https://www.pcgamesupply.com/media/assets/images/MobileGroupImages/Amazon.png'}
+                         alt=""/>
                     <div className="giftcardContent">
-                        <p className={'giftcardTitle'}>{/*giftcard.title*/} Amazon - 10$</p><button className={'redeem'}>1000p</button>
+                        <p className={'giftcardTitle'}>{/*giftcard.title*/} Amazon - 10$</p>
+                        <button className={'redeem'}>1000p</button>
                     </div>
                 </div>
 
                 <div className="giftcard">
-                    <img className={'giftcardImg'} src={/*giftcard.thumbnail*/ 'https://www.pcgamesupply.com/media/assets/images/MobileGroupImages/Amazon.png'} alt=""/>
+                    <img className={'giftcardImg'}
+                         src={/*giftcard.thumbnail*/ 'https://www.pcgamesupply.com/media/assets/images/MobileGroupImages/Amazon.png'}
+                         alt=""/>
                     <div className="giftcardContent">
-                        <p className={'giftcardTitle'}>{/*giftcard.title*/} Amazon - 10$</p><button className={'redeem'}>1000p</button>
+                        <p className={'giftcardTitle'}>{/*giftcard.title*/} Amazon - 10$</p>
+                        <button className={'redeem'}>1000p</button>
                     </div>
                 </div>
 
                 <div className="giftcard">
-                    <img className={'giftcardImg'} src={/*giftcard.thumbnail*/ 'https://www.pcgamesupply.com/media/assets/images/MobileGroupImages/Amazon.png'} alt=""/>
+                    <img className={'giftcardImg'}
+                         src={/*giftcard.thumbnail*/ 'https://www.pcgamesupply.com/media/assets/images/MobileGroupImages/Amazon.png'}
+                         alt=""/>
                     <div className="giftcardContent">
-                        <p className={'giftcardTitle'}>{/*giftcard.title*/} Amazon - 10$</p><button className={'redeem'}>1000p</button>
+                        <p className={'giftcardTitle'}>{/*giftcard.title*/} Amazon - 10$</p>
+                        <button className={'redeem'}>1000p</button>
                     </div>
                 </div>
 
                 <div className="giftcard">
-                    <img className={'giftcardImg'} src={/*giftcard.thumbnail*/ 'https://www.pcgamesupply.com/media/assets/images/MobileGroupImages/Amazon.png'} alt=""/>
+                    <img className={'giftcardImg'}
+                         src={/*giftcard.thumbnail*/ 'https://www.pcgamesupply.com/media/assets/images/MobileGroupImages/Amazon.png'}
+                         alt=""/>
                     <div className="giftcardContent">
-                        <p className={'giftcardTitle'}>{/*giftcard.title*/} Amazon - 10$</p><button className={'redeem'}>1000p</button>
+                        <p className={'giftcardTitle'}>{/*giftcard.title*/} Amazon - 10$</p>
+                        <button className={'redeem'}>1000p</button>
                     </div>
                 </div>
 
@@ -119,14 +121,14 @@ const Redeem = () => {
                     <div key={giftcard.title} className="giftcard">
                         <img className={'giftcardImg'} src={giftcard.thumbnail} alt=""/>
                         <div className="giftcardContent">
-                            <p className={'giftcardTitle'}>{giftcard.title}</p><button className={'redeem'}>{giftcard.pointValue + 'p'}</button>
+                            <p className={'giftcardTitle'}>{giftcard.title}</p>
+                            <button className={'redeem'}>{giftcard.pointValue + 'p'}</button>
                         </div>
                     </div>
                 ))}
 
 
             </div>
-
 
 
         </div>
