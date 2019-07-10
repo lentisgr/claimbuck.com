@@ -1,4 +1,5 @@
 .socialContainer{
+  overflow-y: scroll;
   background-color: white;
   color: #707070;
   height: calc(100% - (80px + 50px + 3em));
@@ -21,5 +22,25 @@
     transform: translateY(14.5px);
     margin-left: auto;
     margin-right: auto;
+
+    &:hover{
+      cursor: pointer;
+    }
+  }
+
+  .social img {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    width: 100px;
+    height: 100%;
+    transform-origin: center;
+    transform: scale3d(1,1,1);
+    transition: all .2s;
+  }
+  .social img:hover {
+    opacity: 0.9;
+    transition: all .2s;
+    transform: scale(1.10);
   }
 }

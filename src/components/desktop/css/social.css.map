@@ -1,1 +1,7 @@
-{"version":3,"sourceRoot":"","sources":[],"names":[],"mappings":"","file":"social.css"}
+{
+"version": 3,
+"mappings": "AAAA,cAAc;EACZ,UAAU,EAAE,GAAG;EAEf,gBAAC;IACC,SAAS,EAAE,KAAK",
+"sources": ["social.scss"],
+"names": [],
+"file": "social.css"
+}
