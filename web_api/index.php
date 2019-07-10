@@ -1,5 +1,5 @@
 <?php
-header("Access-Control-Allow-Origin: *");
+cors();
 error_reporting(E_ALL);
 ini_set('display_errors', 'on');
 include ('page_functions/everyPage_functions/all_pages.php');
@@ -13,19 +13,13 @@ include ('page_functions/offerwall_functions/earn.php');
  * Then the auth token, username and type of request are verified to be filled in or a 'Forbidden' code will be thrown.
  * After that, the auth token is verified and then the user can access the methods.
  */
-/*
- * GET = 'I need some data, can you GET it for me?'
- * POST = 'I am sending some POST with information to the server.'
- */
 
-//TODO: clean up register method
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
         if(!empty($_POST['request'])) {
             $request = $_POST['request'];
             if(!empty($_POST['username'])) {
 
                 $username = filter_var($_POST['username'],FILTER_SANITIZE_STRING);
-                //TODO switch request router
                 if($request=='login') {
                     if(!empty($_POST['email'])&&!empty($_POST['password'])) {
                         $password = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
@@ -71,6 +65,12 @@ include ('page_functions/offerwall_functions/earn.php');
                 } else {
                     BadHttpHeader(array('verification token'));
                 }
+            } elseif($_POST['request']=='authCheck') {
+                if(!empty($_POST['auth_token'])) {
+                    echo verifyAuth($username,$_POST['auth_token']);
+                } else {
+                    BadHttpHeader(array('auth token'));
+                }
             } else {
                 BadHttpHeader(array('request','username'));
             }
@@ -79,9 +79,16 @@ include ('page_functions/offerwall_functions/earn.php');
         }
     } else if($_SERVER['REQUEST_METHOD']=='GET') {
       if(!empty($_GET['request'])) {
+          //Postback requests dont need returning errors as they are automated processes. Errors are handled by the postback sender.
           if($_GET['request']=='postbackAdgate') {
               if(!empty($_GET['tx_id'])&&!empty($_GET['user_id'])&&!empty($_GET['points'])&&!empty($_GET['usd_value'])&&!empty($_GET['offer_title'])) {
-
+                  addPoints($_GET['user_id'],$_GET['points']);
+                  sendWebhook('Adgate',$_GET['user_id'],$_GET['points'],$_GET['tx_id'],$_GET['usd_value'],$_GET['offer_title']);
+              }
+          } else if($_GET['request']=='postbackOffertoro'){
+              if(!empty($_GET['tx_id'])&&!empty($_GET['user_id'])&&!empty($_GET['points'])&&!empty($_GET['usd_value'])&&!empty($_GET['offer_title'])) {
+                  addPoints($_GET['user_id'],$_GET['points']);
+                  sendWebhook('Offertoro',$_GET['user_id'],$_GET['points'],$_GET['tx_id'],$_GET['usd_value'],$_GET['offer_title']);
               }
           } else {
               BadRouterRequest();
@@ -110,5 +117,27 @@ include ('page_functions/offerwall_functions/earn.php');
         echo "1";
         http_response_code(403);
     }
+function cors() {
+
+    // Allow from any origin
+    if (isset($_SERVER['HTTP_ORIGIN'])) {
+        header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
+        header('Access-Control-Allow-Credentials: true');
+        header('Access-Control-Max-Age: 86400');    // cache for 1 day
+    }
+
+    // Access-Control headers are received during OPTIONS requests
+    if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+
+        if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_METHOD']))
+            // may also be using PUT, PATCH, HEAD etc
+            header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+
+        if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']))
+            header("Access-Control-Allow-Headers: {$_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']}");
+
+        exit(0);
+    }
+}
 
 ?>

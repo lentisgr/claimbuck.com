@@ -4,7 +4,9 @@ body {
   font-family: Quicksand, sans-serif;
   width: 100vw;
   height: 100%;
-  background-color: #15DCF3;
+  background-image: url("../images/boat.jpg");
+  -webkit-background-size: cover;
+  background-size: cover;
 }
 
 .required {
@@ -105,7 +107,7 @@ body {
   transform: scale(1.2);
   transition: ease-in-out 0.1s;
 }
-.loginContainer input[type=button] {
+.loginContainer input[type=submit] {
   font-family: Quicksand, sans-serif;
   font-weight: bold;
   border-style: none;
@@ -116,8 +118,9 @@ body {
   float: right;
   margin: 0.2em 0 1.5em 0;
   border-radius: 5px;
+  font-size: 1em;
 }
-.loginContainer input[type=button]:hover {
+.loginContainer input[type=submit]:hover {
   cursor: pointer;
 }
 

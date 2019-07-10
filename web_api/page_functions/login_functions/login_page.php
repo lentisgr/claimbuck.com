@@ -11,8 +11,10 @@ function userLogin($email,$password) {
             if(password_verify($password,$result->password)) {
                 $json = array('succeed'=>'true','message'=>'OK');
                 ob_start();
-                setcookie('auth',$result->auth_token,time() + 1200,'/','claimbuck.com', TRUE);
-                setcookie('username',$result->name,time() + 1200,'/','claimbuck.com', TRUE);
+                setcookie('cookieauthtoken',$result->auth_token,time() + 10000,'/','mintrexo-testarea.xyz', FALSE);
+                setcookie('cookieusername',$result->name,time() + 10000,'/','mintrexo-testarea.xyz', FALSE);
+                $_COOKIE['cookieauthtoken'] = $result->auth_token;
+                $_COOKIE['cookieusername'] = $result->name;
                 ob_end_flush();
             } else {
                 $json = array('succeed'=>'false','message'=>'5');

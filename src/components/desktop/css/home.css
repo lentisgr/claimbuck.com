@@ -1,13 +1,15 @@
 .desktopContainer {
   margin-top: 8em;
   display: grid;
-  grid-template-columns: 1fr 1fr; }
+  grid-template-columns: 1fr 1fr;
+}
 
 .desktopWelcomeMessage {
   margin: 7em 0 7.5vh 0;
   color: white;
   font-size: 2.2em;
-  font-weight: bold; }
+  font-weight: bold;
+}
 
 .desktopInsightsContainer {
   padding-top: 100px;
@@ -18,49 +20,59 @@
   color: black;
   border-radius: 30px;
   width: 35vw;
-  box-shadow: 2px 5px 5px 0px rgba(0, 0, 0, 0.5); }
+  box-shadow: 2px 5px 5px 0px rgba(0, 0, 0, 0.5);
+}
 .desktopInsightsHeader h1 {
   font-size: 1.75em;
   font-weight: bold;
-  transform: translateY(1em); }
-  .desktopInsightsHeader h1 .icon {
-    margin-right: 5px; }
+  transform: translateY(1em);
+}
+.desktopInsightsHeader h1 .icon {
+  margin-right: 5px;
+}
 .desktopInsightsContent {
   display: grid;
   grid-template-columns: 1fr 79.2px;
   margin-left: auto;
   margin-right: auto;
-  width: 80%; }
+  width: 80%;
+}
 .desktopInsightsText ul {
   padding-left: 20px;
   font-weight: bold;
   font-size: 1.5em;
   list-style: none;
-  text-align: left; }
-  .desktopInsightsText ul li {
-    margin: 2em 0 2em 0; }
+  text-align: left;
+}
+.desktopInsightsText ul li {
+  margin: 2em 0 2em 0;
+}
 .desktopInsightsData {
   margin-top: 40px;
   transform: translateX(-20px);
   background-color: dimgray;
   border-radius: 30px;
-  height: 220px; }
-  .desktopInsightsData ul {
-    transform: translateY(-5px);
-    padding: 0;
-    font-weight: bold;
-    font-size: 1.1em;
-    list-style: none;
-    color: white; }
-    .desktopInsightsData ul li {
-      margin: 2.4em 0 2.5em 0; }
-    .desktopInsightsData ul .balance {
-      margin-top: -13px;
-      margin-bottom: 0px;
-      border-top-left-radius: 30px;
-      border-top-right-radius: 30px;
-      padding-top: 1em;
-      padding-bottom: 1em;
-      background-color: #0E6937; }
+  height: 220px;
+}
+.desktopInsightsData ul {
+  transform: translateY(-5px);
+  padding: 0;
+  font-weight: bold;
+  font-size: 1.1em;
+  list-style: none;
+  color: white;
+}
+.desktopInsightsData ul li {
+  margin: 2.4em 0 2.5em 0;
+}
+.desktopInsightsData ul .balance {
+  margin-top: -13px;
+  margin-bottom: 0px;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  background-color: #0E6937;
+}
 
 /*# sourceMappingURL=home.css.map */

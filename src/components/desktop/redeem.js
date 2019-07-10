@@ -1,28 +1,12 @@
 import React, {useState, useEffect} from "react";
-import './css/redeem.css';
+import Cookies from 'universal-cookie';
+const cookies = new Cookies();
 
 
 const Redeem = () => {
+    const cookieauthtoken = cookies.get('cookieauthtoken');
+    const cookieusername = cookies.get('cookieusername');
 
-    function getCookie(cname) {
-        var name = cname + "=";
-        var decodedCookie = decodeURIComponent(document.cookie);
-        var ca = decodedCookie.split(';');
-        for (var i = 0; i < ca.length; i++) {
-            var c = ca[i];
-            while (c.charAt(0) === ' ') {
-                c = c.substring(1);
-            }
-            if (c.indexOf(name) === 0) {
-                return c.substring(name.length, c.length);
-            }
-        }
-        return "";
-    }
-
-    let username = 'XRaider';
-    // let cookieauthtoken = getCookie('cookieauthtoken');
-    // let cookieusername = getCookie('cookieusername');
     const [accountInfo, setAccountInfo] = useState([]);
     const [giftcardData, setGiftcardData] = useState([]);
 
@@ -34,12 +18,12 @@ const Redeem = () => {
         getGiftcardData()
     }, []);
 
-    const getUserData = async () => fetch('https://claimbuck.com/web_api/index.php', {
+    const getUserData = async () => fetch('http://mintrexo-testarea.xyz/web_api/index.php', {
         method: 'POST',
         headers: {
             "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
         },
-        body: 'request=userInfo&auth_token=' + 'vY6RiAxQoKHzdkZyEa2XLgIht7PcMGwlbu5qWN4Jp3jOVU1F' + '&username=' + 'ss'
+        body: 'request=userInfo&auth_token=' + cookieauthtoken + '&username=' + cookieusername
     })
         .then(function (response) {
             return response.json();
@@ -49,7 +33,7 @@ const Redeem = () => {
             setAccountInfo(data);
         });
 
-    const getGiftcardData = async () => fetch('https://claimbuck.com/web_api/index.php', {
+    const getGiftcardData = async () => fetch('http://mintrexo-testarea.xyz/web_api/index.php', {
         method: 'POST',
         headers: {
             "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
