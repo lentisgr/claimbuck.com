@@ -1,55 +1,48 @@
 import React, {useState, useEffect} from 'react'
 import './css/home.css'
+import Cookies from 'universal-cookie';
 
 import insightIcon from '../../images/insight icon.svg';
-
+const cookies = new Cookies();
 const Home = () => {
 
-    function getCookie(cname) {
-        var name = cname + "=";
-        var decodedCookie = decodeURIComponent(document.cookie);
-        var ca = decodedCookie.split(';');
-        for (var i = 0; i < ca.length; i++) {
-            var c = ca[i];
-            while (c.charAt(0) === ' ') {
-                c = c.substring(1);
-            }
-            if (c.indexOf(name) === 0) {
-                return c.substring(name.length, c.length);
-            }
-        }
-        return "";
-    }
-
-    let username = 'XRaider';
-    let cookieauthtoken = getCookie('cookieauthtoken');
-    let cookieusername = getCookie('cookieusername');
+    const cookieauthtoken = cookies.get('cookieauthtoken');
+    const cookieusername = cookies.get('cookieusername');
     const [accountInfo, setAccountInfo] = useState([]);
 
     useEffect(() => {
         getUserData()
     }, []);
 
-    const getUserData = async () => fetch('https://claimbuck.com/web_api/index.php', {
+    const getUserData = async () => fetch('http://mintrexo-testarea.xyz/web_api/index.php', {
         method: 'POST',
         headers: {
             "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
         },
-        body: 'request=userInfo&auth_token=' + 'vY6RiAxQoKHzdkZyEa2XLgIht7PcMGwlbu5qWN4Jp3jOVU1F' + '&username=' + 'ss'
+        body: 'request=userInfo&auth_token=' + cookieauthtoken + '&username=' + cookieusername
     })
         .then(function (response) {
             return response.json();
         })
         .then(function (data) {
-            console.log(data);
-            setAccountInfo(data);
+            checkMessage(data);
         });
+
+    function checkMessage(data) {
+        if (data.succeed === 'true') {
+            setAccountInfo(data);
+        } else if (data.message === '4_2'||data.message === '4_1') {
+            window.location = '/landingpage';
+            cookies.remove('cookieusername');
+            cookies.remove('cookieauthtoken');
+        }
+    }
 
 
     return (
         <div className={'wrapper'}>
             <div className="welcomeMessage">
-                Hey {username}, <br/> Welcome back!
+                Hey {cookieusername}, <br/> Welcome back!
             </div>
 
             <div className="insightsContainer">

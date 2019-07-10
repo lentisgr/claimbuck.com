@@ -1,25 +1,38 @@
 import React, {useState} from "react";
 import './css/earn.css';
+import Cookies from 'universal-cookie';
+
+const cookies = new Cookies();
+const cookieauthtoken = cookies.get('cookieauthtoken');
+const cookieusername = cookies.get('cookieusername');
+const countryCode = cookies.get('cookiecountrycode');
+const username = null;
 
 const Earn = () => {
 
-    function getCookie(cname) {
-        let name = cname + "=";
-        let decodedCookie = decodeURIComponent(document.cookie);
-        let ca = decodedCookie.split(';');
-        for (let i = 0; i < ca.length; i++) {
-            let c = ca[i];
-            while (c.charAt(0) === ' ') {
-                c = c.substring(1);
-            }
-            if (c.indexOf(name) === 0) {
-                return c.substring(name.length, c.length);
-            }
+    const authCheck = async () => fetch('http://mintrexo-testarea.xyz/web_api/index.php', {
+        method: 'POST',
+        headers: {
+            "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+        },
+        body: 'request=authCheck&auth_token=' + cookieauthtoken + '&username=' + cookieusername
+    })
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            checkMessage(data);
+        });
+
+    function checkMessage(data) {
+        if (data.message === '4_2'||data.message === '4_1') {
+            window.location = '/landingpage';
+            cookies.remove('cookieusername');
+            cookies.remove('cookieauthtoken');
         }
-        return "";
     }
 
-    const username = getCookie('username');
+    authCheck();
 
     const [wall, setWall] = useState('https://wall.adgaterewards.com/nqqYrw/' + 'ss');
 
