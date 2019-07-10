@@ -5,7 +5,6 @@ import Cookies from 'universal-cookie';
 const cookies = new Cookies();
 const cookieauthtoken = cookies.get('cookieauthtoken');
 const cookieusername = cookies.get('cookieusername');
-const countryCode = cookies.get('cookiecountrycode');
 const username = null;
 
 const Earn = () => {
