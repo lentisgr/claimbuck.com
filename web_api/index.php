@@ -6,6 +6,7 @@ include ('page_functions/everyPage_functions/all_pages.php');
 include ('page_functions/login_functions/login_page.php');
 include ('page_functions/register_functions/register.php');
 include ('page_functions/offerwall_functions/earn.php');
+include ('page_functions/redeem_functions/redeem_page.php');
 
 /*
  * This file acts as a router for all incoming API calls.
@@ -90,6 +91,18 @@ include ('page_functions/offerwall_functions/earn.php');
                   addPoints($_GET['user_id'],$_GET['points']);
                   sendWebhook('Offertoro',$_GET['user_id'],$_GET['points'],$_GET['tx_id'],$_GET['usd_value'],$_GET['offer_title']);
               }
+          } else if($_GET['request']=='giftcardData') {
+              if(!empty($_GET['auth_token'])&&!empty($_GET['username'])) {
+                  $json = verifyAuth($_GET['username'],$_GET['auth_token']);
+                  $json2 = json_decode($json);
+                  if($json2->message=='OK') {
+                      echo (getGiftcards());
+                  } else {
+                      echo $json;
+                  }
+              } else {
+                  BadHttpHeader(array('auth token','username'));
+              }
           } else {
               BadRouterRequest();
           }
@@ -101,20 +114,24 @@ include ('page_functions/offerwall_functions/earn.php');
     }
 
     function BadHttpHeader($values) {
-        echo "API call error: http header not filled in: ";
-        foreach ($values as $value){echo ("'".$value."' ");}
+        $json = "API call error: http header not filled in: ";
+        foreach ($values as $value){$json = $json.("'".$value."' ");}
+        echo json_encode($json,JSON_FORCE_OBJECT);
         http_response_code(403);
     }
     function BadRequestMethod() {
-        echo "API call error: Request method not allowed. Use GET or POST instead!";
+        $json = "API call error: Request method not allowed. Use GET or POST instead!";
+        echo json_encode($json,JSON_FORCE_OBJECT);
         http_response_code(405);
     }
     function BadRouterRequest() {
-        echo "API call error: router request not found!";
+        $json = "API call error: router request not found!";
+        echo json_encode($json,JSON_FORCE_OBJECT);
         http_response_code(404);
     }
     function BadEmail() {
-        echo "1";
+        $json = "1";
+        echo json_encode($json,JSON_FORCE_OBJECT);
         http_response_code(403);
     }
 function cors() {
@@ -135,7 +152,7 @@ function cors() {
 
         if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']))
             header("Access-Control-Allow-Headers: {$_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']}");
-
+        echo 'ss';
         exit(0);
     }
 }

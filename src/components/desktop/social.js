@@ -6,7 +6,7 @@ const cookies = new Cookies();
 const cookieauthtoken = cookies.get('cookieauthtoken');
 const cookieusername = cookies.get('cookieusername');
 
-const authCheck = async () => fetch('http://mintrexo-testarea.xyz/web_api/index.php', {
+const authCheck = async () => fetch('https://mintrexo-testarea.xyz/web_api/index.php', {
     method: 'POST',
     headers: {
         "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
@@ -22,7 +22,7 @@ const authCheck = async () => fetch('http://mintrexo-testarea.xyz/web_api/index.
 
 function checkMessage(data) {
     if (data.message === '4_2'||data.message === '4_1') {
-        window.location = '/landingpage';
+        window.location = '/landingpage.html';
         cookies.remove('cookieusername');
         cookies.remove('cookieauthtoken');
     }

@@ -9,7 +9,7 @@ const username = null;
 
 const Earn = () => {
 
-    const authCheck = async () => fetch('http://mintrexo-testarea.xyz/web_api/index.php', {
+    const authCheck = async () => fetch('https://mintrexo-testarea.xyz/web_api/index.php', {
         method: 'POST',
         headers: {
             "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
@@ -25,7 +25,7 @@ const Earn = () => {
 
     function checkMessage(data) {
         if (data.message === '4_2'||data.message === '4_1') {
-            window.location = '/landingpage';
+            window.location = '/landingpage.html';
             cookies.remove('cookieusername');
             cookies.remove('cookieauthtoken');
         }

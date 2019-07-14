@@ -11,8 +11,8 @@ function userLogin($email,$password) {
             if(password_verify($password,$result->password)) {
                 $json = array('succeed'=>'true','message'=>'OK');
                 ob_start();
-                setcookie('cookieauthtoken',$result->auth_token,time() + 10000,'/','mintrexo-testarea.xyz', FALSE);
-                setcookie('cookieusername',$result->name,time() + 10000,'/','mintrexo-testarea.xyz', FALSE);
+                setcookie('cookieauthtoken',$result->auth_token,time() + 10000,'/','mintrexo-testarea.xyz', TRUE);
+                setcookie('cookieusername',$result->name,time() + 10000,'/','mintrexo-testarea.xyz', TRUE);
                 $_COOKIE['cookieauthtoken'] = $result->auth_token;
                 $_COOKIE['cookieusername'] = $result->name;
                 ob_end_flush();

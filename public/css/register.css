@@ -107,7 +107,7 @@ body {
   transform: scale(1.2);
   transition: ease-in-out 0.1s;
 }
-.loginContainer input[type=submit] {
+.loginContainer input[type=button] {
   font-family: Quicksand, sans-serif;
   font-weight: bold;
   border-style: none;
@@ -120,7 +120,7 @@ body {
   border-radius: 5px;
   font-size: 1em;
 }
-.loginContainer input[type=submit]:hover {
+.loginContainer input[type=button]:hover {
   cursor: pointer;
 }
 

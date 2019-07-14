@@ -1,13 +1,14 @@
 .navbar {
   overflow-y: hidden;
-  height: 5em;
+  height: 3.8em;
   width: 100vw;
   background-color: white;
-  position: absolute;
+  position: fixed;
   bottom: 0;
 
   .navItems {
     padding: 0;
+    margin-top: 5px;
     list-style: none;
     display: flex;
     flex-direction: row;
@@ -25,10 +26,10 @@
       display: flex;
       flex-direction: column;
       background-image: url("../../../images/homepage_inactive.png");
-      background-size: 42px 42px;
+      background-size: 34px 34px;
       background-position: top;
       background-repeat: no-repeat;
-      padding-top: 40px;
+      padding-top: 35px;
     }
   }
   .navLinkHomeActive{
@@ -36,10 +37,10 @@
       display: flex;
       flex-direction: column;
       background-image: url("../../../images/homepage_active.png");
-      background-size: 42px 42px;
+      background-size: 34px 34px;
       background-position: top;
       background-repeat: no-repeat;
-      padding-top: 40px;
+      padding-top: 35px;
     }
   }
 
@@ -49,10 +50,10 @@
       display: flex;
       flex-direction: column;
       background-image: url("../../../images/question_inactive.png");
-      background-size: 42px 42px;
+      background-size: 34px 34px;
       background-position: top;
       background-repeat: no-repeat;
-      padding-top: 40px;
+      padding-top: 35px;
     }
   }
   .navLinkHelpActive{
@@ -60,10 +61,10 @@
       display: flex;
       flex-direction: column;
       background-image: url("../../../images/question_active.png");
-      background-size: 42px 42px;
+      background-size: 34px 34px;
       background-position: top;
       background-repeat: no-repeat;
-      padding-top: 40px;
+      padding-top: 35px;
     }
   }
 
@@ -73,10 +74,10 @@
       display: flex;
       flex-direction: column;
       background-image: url("../../../images/dollar-symbol_inactive.png");
-      background-size: 42px 42px;
+      background-size: 34px 34px;
       background-position: top;
       background-repeat: no-repeat;
-      padding-top: 40px;
+      padding-top: 35px;
     }
   }
   .navLinkEarnActive{
@@ -84,10 +85,10 @@
       display: flex;
       flex-direction: column;
       background-image: url("../../../images/dollar-symbol_active.png");
-      background-size: 42px 42px;
+      background-size: 34px 34px;
       background-position: top;
       background-repeat: no-repeat;
-      padding-top: 40px;
+      padding-top: 35px;
     }
   }
 
@@ -97,10 +98,10 @@
       display: flex;
       flex-direction: column;
       background-image: url("../../../images/giftbox_inactive.png");
-      background-size: 42px 42px;
+      background-size: 34px 34px;
       background-position: top;
       background-repeat: no-repeat;
-      padding-top: 40px;
+      padding-top: 35px;
     }
   }
   .navLinkRedeemActive{
@@ -108,10 +109,10 @@
       display: flex;
       flex-direction: column;
       background-image: url("../../../images/giftbox_active.png");
-      background-size: 42px 42px;
+      background-size: 34px 34px;
       background-position: top;
       background-repeat: no-repeat;
-      padding-top: 40px;
+      padding-top: 35px;
     }
   }
 
@@ -121,10 +122,10 @@
       display: flex;
       flex-direction: column;
       background-image: url("../../../images/multiple-users-silhouette_inactive.png");
-      background-size: 42px 42px;
+      background-size: 34px 34px;
       background-position: top;
       background-repeat: no-repeat;
-      padding-top: 40px;
+      padding-top: 35px;
     }
   }
   .navLinkSocialActive{
@@ -132,10 +133,10 @@
       display: flex;
       flex-direction: column;
       background-image: url("../../../images/multiple-users-silhouette_active.png");
-      background-size: 42px 42px;
+      background-size: 34px 34px;
       background-position: top;
       background-repeat: no-repeat;
-      padding-top: 40px;
+      padding-top: 35px;
     }
   }
 }

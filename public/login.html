@@ -22,7 +22,7 @@
                 <input type="password" id="password" name="password">
             </div>
 
-            <input id="submit" type="submit" value="Login">
+                <input id="submit" type="button" value="Login">
 
             <div class="errorMessage" id="errorMessage"></div>
 
@@ -36,13 +36,12 @@
     let submit = document.getElementById('submit');
     let error = document.getElementById('errorMessage');
 
-    submit.addEventListener('click', () => {
-
+    function fetchCall() {
         if (email.value !== '' && password.value !== '') {
             email.style.borderColor = '#fff';
             password.style.borderColor = '#fff';
 
-            const loginFetch = async () => fetch('https://claimbuck.com/web_api/index.php', {
+            const loginFetch = async () => fetch('https://mintrexo-testarea.xyz/web_api/index.php', {
                 method: 'POST',
                 credentials: 'include',
                 headers: {
@@ -58,26 +57,38 @@
                     checkMessage(data);
                 });
             loginFetch();
-
-            function checkMessage(data) {
-                if (data.succeed === 'true') {
-                    window.location = '/';
-                } else if (data.message === '4') {
-                    error.innerHTML = 'This e-mail is not registered with an account.';
-                    email.style.borderColor = '#ff978c';
-                } else if (data.message === '5') {
-                    error.innerHTML = 'Password filled in is incorrect.';
-                    password.style.borderColor = '#ff978c';
-                } else if (data.message === '6') {
-                    error.innerHTML = 'Please verify your e-mail to login.';
-                }
-            }
-
         } else {
             email.style.borderColor = '#ff978c';
             password.style.borderColor = '#ff978c';
             error.innerHTML = 'Please fill in all fields.';
         }
+    }
+    function checkMessage(data) {
+        if (data.succeed === 'true') {
+            window.location = '/';
+        } else if (data.message === '4') {
+            error.innerHTML = 'This e-mail is not registered with an account.';
+            email.style.borderColor = '#ff978c';
+        } else if (data.message === '5') {
+            error.innerHTML = 'Password filled in is incorrect.';
+            password.style.borderColor = '#ff978c';
+        } else if (data.message === '6') {
+            error.innerHTML = 'Please verify your e-mail to login.';
+        }
+    }
+
+    submit.addEventListener('click', () => {
+        fetchCall();
+    });
+    email.addEventListener("keyup", () => {
+       if(event.keyCode === 13) {
+           fetchCall();
+       }
+    });
+    password.addEventListener("keyup", () => {
+       if(event.keyCode === 13) {
+           fetchCall();
+       }
     });
 </script>
 

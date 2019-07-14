@@ -7,33 +7,38 @@
   margin-top: 1.5em;
   margin-left: auto;
   margin-right: auto;
-  border-radius: 10px; }
-  .socialContainer .discordBanner {
-    width: 80vw;
-    height: 157px;
-    background-image: url("../../../images/discord.png");
-    background-color: #7489D8;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    border-radius: 10px;
-    transform: translateY(14.5px);
-    margin-left: auto;
-    margin-right: auto; }
-    .socialContainer .discordBanner:hover {
-      cursor: pointer; }
-  .socialContainer .social img {
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-bottom: 10px;
-    width: 100px;
-    height: 100%;
-    transform-origin: center;
-    transform: scale3d(1, 1, 1);
-    transition: all .2s; }
-  .socialContainer .social img:hover {
-    opacity: 0.9;
-    transition: all .2s;
-    transform: scale(1.1); }
+  border-radius: 10px;
+}
+.socialContainer .discordBanner {
+  width: 80vw;
+  height: 157px;
+  background-image: url("../../../images/discord.png");
+  background-color: #7489D8;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 10px;
+  transform: translateY(14.5px);
+  margin-left: auto;
+  margin-right: auto;
+}
+.socialContainer .discordBanner:hover {
+  cursor: pointer;
+}
+.socialContainer .social img {
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  width: 100px;
+  height: 100%;
+  transform-origin: center;
+  transform: scale3d(1, 1, 1);
+  transition: all 0.2s;
+}
+.socialContainer .social img:hover {
+  opacity: 0.9;
+  transition: all 0.2s;
+  transform: scale(1.1);
+}
 
 /*# sourceMappingURL=social.css.map */

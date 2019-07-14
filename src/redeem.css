@@ -1,0 +1,208 @@
+.redeemWrapper {
+  margin-top: -2px;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  background-color: #0DDDF3;
+  color: #707070;
+  height: calc((100vh - 110px));
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.redeemWrapper .giftcardContainer {
+  margin-top: 4.2em;
+}
+.redeemWrapper .balance {
+  z-index: 999999999999999;
+  position: fixed;
+  background-color: #F6F6F6;
+  width: 100%;
+  height: 2.5em;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+.redeemWrapper .balance h2 {
+  transform: translateY(0.2em);
+  margin: 0;
+}
+.redeemWrapper .balance h2 span {
+  font-size: 0.8em;
+  margin-left: 20px;
+  padding: 4px 15px 4px 15px;
+  border-radius: 30px;
+  color: white;
+  background-color: #0E6937;
+}
+.redeemWrapper .giftcard {
+  padding: 10px;
+  margin: 20px auto 20px auto;
+  width: 80vw;
+  height: auto;
+  max-width: 400px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 7px 7px rgba(0, 0, 0, 0.1);
+}
+.redeemWrapper .giftcardImgDiv {
+  position: relative;
+}
+.redeemWrapper .giftcardImg {
+  width: 100%;
+  object-fit: cover;
+  max-width: 400px;
+  max-height: 250px;
+}
+.redeemWrapper .giftcard .giftcardContent {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 8px;
+}
+.redeemWrapper .giftcardTitle {
+  margin-left: 2px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-size: calc(18px + 1.2vw);
+  font-weight: bold;
+  text-align: left;
+  align-self: center;
+}
+.redeemWrapper .giftcardStockOn {
+  background-color: #0E6937;
+  color: white;
+  display: inline-block;
+  width: 100px;
+  margin-top: 0px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  border-radius: 10px;
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+.redeemWrapper .giftcard .redeemButtonOn {
+  font-size: 1.1em;
+  margin-top: auto;
+  border-radius: 10px;
+  border-style: none;
+  color: white;
+  background-color: royalblue;
+  width: 150px;
+  height: 40px;
+  align-self: center;
+  justify-self: end;
+}
+.redeemWrapper .giftcardStockOff {
+  background-color: #b91e0f;
+  color: white;
+  display: inline-block;
+  width: 100px;
+  margin-top: 0px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  border-radius: 10px;
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+.redeemWrapper .giftcard .redeemButtonOff {
+  font-size: 1.1em;
+  margin-top: auto;
+  border-radius: 10px;
+  border-style: none;
+  color: white;
+  background-color: #a0a0a0;
+  width: 150px;
+  height: 40px;
+  align-self: center;
+  justify-self: end;
+}
+.redeemWrapper .redeemModal {
+  margin-left: auto;
+  margin-right: auto;
+  top: 0px;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.redeemWrapper .innerModal {
+  border-radius: 10px;
+  display: inline-block;
+  width: 85vw;
+  margin-top: 65px;
+  background-color: white;
+}
+.redeemWrapper .innerModal img {
+  width: 100%;
+  max-height: 250px;
+}
+.redeemWrapper .content {
+  width: 95%;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 500px;
+}
+.redeemWrapper .modalFlex {
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+}
+.redeemWrapper .modalType {
+  margin-left: 2px;
+  color: black;
+  text-align: left;
+}
+.redeemWrapper .modalPoints {
+  background-color: #0E6937;
+  color: white;
+  height: 20px;
+  margin-top: 20px;
+  margin-right: 2px;
+  padding: 5px 15px;
+  border-radius: 15px;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+@media only screen and (min-width: 992px) {
+  .giftcardGrid {
+    row-gap: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 992px;
+    display: grid;
+    margin-top: 5em;
+    margin-bottom: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+
+  .giftcard {
+    max-width: 300px !important;
+  }
+}
+@media only screen and (min-width: 1300px) {
+  .giftcardGrid {
+    max-width: 1500px;
+  }
+
+  .giftcard {
+    max-width: 400px !important;
+  }
+
+  .giftcardTitle {
+    margin-left: 2px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-size: 30px !important;
+    font-weight: bold;
+    text-align: left;
+    align-self: center;
+  }
+}
+
+/*# sourceMappingURL=redeem.css.map */

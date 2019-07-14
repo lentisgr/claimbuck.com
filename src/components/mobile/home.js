@@ -14,7 +14,7 @@ const Home = () => {
         getUserData()
     }, []);
 
-    const getUserData = async () => fetch('http://mintrexo-testarea.xyz/web_api/index.php', {
+    const getUserData = async () => fetch('https://mintrexo-testarea.xyz/web_api/index.php', {
         method: 'POST',
         headers: {
             "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
@@ -32,44 +32,47 @@ const Home = () => {
         if (data.succeed === 'true') {
             setAccountInfo(data);
         } else if (data.message === '4_2'||data.message === '4_1') {
-            window.location = '/landingpage';
+            window.location = '/landingpage.html';
             cookies.remove('cookieusername');
             cookies.remove('cookieauthtoken');
         }
     }
 
-
-    return (
-        <div className={'wrapper'}>
-            <div className="welcomeMessage">
-                Hey {cookieusername}, <br/> Welcome back!
-            </div>
-
-            <div className="insightsContainer">
-                <div className="insightsHeader">
-                    <h1><span className={'icon'}><img src={insightIcon} alt=""/></span>Insights</h1>
+    if(cookieauthtoken==null||cookieusername==null) {
+        window.location = '/landingpage.html';
+    } else {
+        return (
+            <div className={'wrapper'}>
+                <div className="welcomeMessage">
+                    Hey {cookieusername}, <br/> Welcome back!
                 </div>
-                <div className="insightsContent">
-                    <div className="insightsText">
-                        <ul>
-                            <li>Balance:</li>
-                            <li>Earnings:</li>
-                            <li>Offers completed:</li>
-                        </ul>
+
+                <div className="insightsContainer">
+                    <div className="insightsHeader">
+                        <h1><span className={'icon'}><img src={insightIcon} alt=""/></span>Insights</h1>
                     </div>
-                    <div className="insightsData">
-                        <ul>
-                            <li className={'balance'}>{accountInfo.points}</li>
-                            <li>{accountInfo.total_points}</li>
-                            <li>{accountInfo.completed_offers}</li>
-                        </ul>
+                    <div className="insightsContent">
+                        <div className="insightsText">
+                            <ul>
+                                <li>Balance:</li>
+                                <li>Earnings:</li>
+                                <li>Offers completed:</li>
+                            </ul>
+                        </div>
+                        <div className="insightsData">
+                            <ul>
+                                <li className={'balance'}>{accountInfo.points}</li>
+                                <li>{accountInfo.total_points}</li>
+                                <li>{accountInfo.completed_offers}</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
+
+
             </div>
-
-
-        </div>
-    )
+        )
+    }
 };
 
 
