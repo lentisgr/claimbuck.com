@@ -7,3 +7,8 @@ html{
   text-align: center;
   font-family: Quicksand, sans-serif;
 }
+
+body {
+  height: calc(100vh + 60px);
+  margin: 0;
+}

@@ -1,16 +1,22 @@
 import {NavLink} from "react-router-dom";
 import React from "react";
 import './css/navbar.css'
+import Cookies from 'universal-cookie';
 
+const cookies = new Cookies();
 class Navbar extends React.Component {
+
+    logout() {
+        cookies.remove('cookieusername');
+        cookies.remove('cookieauthtoken');
+        window.location = '/landingpage.html';
+    }
+
     render() {
         return (
 
             <div className="navbar">
                 <ul className={'navItems'}>
-                    <NavLink to={'/help'} className={'navLinkHelp'} activeClassName={'navLinkHelpActive'}>
-                        <li>Help</li>
-                    </NavLink>
                     <NavLink to={'/'} exact={true} className={'navLinkHome'} activeClassName={'navLinkHomeActive'}>
                         <li>Home</li>
                     </NavLink>
@@ -23,6 +29,10 @@ class Navbar extends React.Component {
                     <NavLink to={'/social'} className={'navLinkSocial'} activeClassName={'navLinkSocialActive'}>
                         <li>Social</li>
                     </NavLink>
+                    <NavLink to={'/help'} className={'navLinkHelp'} activeClassName={'navLinkHelpActive'}>
+                        <li>Help</li>
+                    </NavLink>
+                    <li className={'navLinkLogout'} onClick={this.logout}>Logout</li>
                 </ul>
             </div>
         )

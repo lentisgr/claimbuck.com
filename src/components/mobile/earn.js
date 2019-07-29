@@ -5,12 +5,11 @@ import Cookies from 'universal-cookie';
 const cookies = new Cookies();
 const cookieauthtoken = cookies.get('cookieauthtoken');
 const cookieusername = cookies.get('cookieusername');
-const countryCode = cookies.get('cookiecountrycode');
-const username = null;
+const username = cookieusername;
 
 const Earn = () => {
 
-    const authCheck = async () => fetch('https://mintrexo-testarea.xyz/web_api/index.php', {
+    const authCheck = async () => fetch('https://claimbuck.com/web_api/index.php', {
         method: 'POST',
         headers: {
             "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
@@ -34,14 +33,14 @@ const Earn = () => {
 
     authCheck();
 
-    const [wall, setWall] = useState('https://wall.adgaterewards.com/nqqYrw/' + 'ss');
+    const [wall, setWall] = useState('https://wall.adgaterewards.com/nqqYrw/' + username);
 
     const changeToWall_1 = function () {
-        setWall('https://wall.adgaterewards.com/nqqYrw/' + 'ss');
+        setWall('https://wall.adgaterewards.com/nqqYrw/' + username);
     };
 
     const changeToWall_2 = function () {
-        setWall('https://www.offertoro.com/ifr/show/19322/' + 'ss' + '/8063');
+        setWall('https://www.offertoro.com/ifr/show/19322/' + username + '/8063');
     };
 
     return (

@@ -2,8 +2,16 @@ import logo from "../../images/image0.png";
 import React from "react";
 import {NavLink} from "react-router-dom";
 import './css/desktopNavbar.css';
+import Cookies from 'universal-cookie';
 
+const cookies = new Cookies();
 class navbarDesktop extends React.Component {
+
+    logout() {
+        cookies.remove('cookieusername');
+        cookies.remove('cookieauthtoken');
+        window.location = '/landingpage.html';
+    }
     render() {
         return (
             <div className="desktopNavbar">
@@ -13,9 +21,6 @@ class navbarDesktop extends React.Component {
                 </div>
 
                 <ul className={'navItems'}>
-                    <NavLink to={'/help'} className={'navLinkHelp'} activeClassName={'navLinkHelpActive'}>
-                        <li>Help</li>
-                    </NavLink>
                     <NavLink to={'/'} exact={true} className={'navLinkHome'} activeClassName={'navLinkHomeActive'}>
                         <li>Home</li>
                     </NavLink>
@@ -28,6 +33,10 @@ class navbarDesktop extends React.Component {
                     <NavLink to={'/social'} className={'navLinkSocial'} activeClassName={'navLinkSocialActive'}>
                         <li>Social</li>
                     </NavLink>
+                    <NavLink to={'/help'} className={'navLinkHelp'} activeClassName={'navLinkHelpActive'}>
+                        <li>Help</li>
+                    </NavLink>
+                    <li className={'navLinkLogout'} onClick={this.logout}>Logout</li>
                 </ul>
             </div>)
     }

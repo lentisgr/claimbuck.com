@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.2.0",
+    "body-scroll-lock": "^2.6.4",
+    "inobounce": "^0.2.0",
     "material-ui": "^0.20.2",
     "react": "^16.8.6",
     "react-awesome-modal": "^2.0.5",

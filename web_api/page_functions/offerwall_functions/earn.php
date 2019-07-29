@@ -12,8 +12,10 @@ function addPoints($username, $points) {
             'total_points' => $total,
             'completed_offers' => $c_offers
         );
-
         QB::table('users')->where('name', $username)->update($data);
+        $row = QB::table('statistics')->where('id', '=', 1);
+        $offers = $row->first()->completed_offers+1;
+        QB::table('statistics')->update(array('completed_offers'=>$offers));
     }
 }
 
@@ -127,5 +129,28 @@ function sendWebhook($company,$username,$points,$offer_id,$usd,$offer_title) {
 
     $response = curl_exec( $ch );
     curl_close( $ch );
+}
+
+function storePostback($company,$username,$points,$offer_id,$usd,$offer_title) {
+    $data = array(
+        'username' => $username,
+        'company' => $company,
+        'points' => $points,
+        'payout' => $usd,
+        'offer_title' => $offer_title,
+        'offer_id' => $offer_id,
+        'date' => date('Y-m-d H:i:s')
+    );
+    QB::table('postbacks')->insert($data);
+}
+
+function postbackExists($company,$offer_id) {
+    $query = QB::table('postbacks')
+        ->where('company','=',$company)
+        ->where('offer_id','=',$offer_id);
+    if($query->count()>0) {
+        return true;
+    }
+    return false;
 }
 ?>

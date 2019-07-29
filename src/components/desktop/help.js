@@ -39,8 +39,7 @@ class Help extends React.Component {
 
                         <ul className={'questionContainer'}>
                             <li style={{color: 'black', fontWeight: 'bold'}}>Q. <span>When will I receive my reward?</span></li>
-                            <li><span style={{color: 'black', fontWeight: 'bold',marginLeft:'0'}}>A. </span><span>Most rewards are received within 24-48 business hours of completing the offer. If you completed an offer and did not receive your reward within these hours see <a
-                                href="#pointNotRecieved">here</a></span>
+                            <li><span style={{color: 'black', fontWeight: 'bold',marginLeft:'0'}}>A. </span><span>Most rewards are received within 24-48 business hours of completing the offer. If you completed an offer and did not receive your reward within these hours, please contact support.</span>
                             </li>
                         </ul>
 
@@ -53,6 +52,11 @@ class Help extends React.Component {
                         <ul className={'questionContainer'}>
                             <li style={{color: 'black', fontWeight: 'bold'}}>Q. <span>How Many Points Do You Need To Redeem A Reward?</span></li>
                             <li><span style={{color: 'black', fontWeight: 'bold',marginLeft:'0'}}>A. </span><span>Our lowest offer starts at 1000 points for a $10 gift card. Make sure you have sufficient points before redeeming.</span>
+                            </li>
+                        </ul>
+                        <ul className={'questionContainer'}>
+                            <li style={{color: 'black', fontWeight: 'bold'}}>Q. <span>Why do I get an error when redeeming a card?</span></li>
+                            <li><span style={{color: 'black', fontWeight: 'bold',marginLeft:'0'}}>A. </span><span>This could be because the stock has emptied since you loaded onto the website. Try waiting a few minutes and refresh the website as well.</span>
                             </li>
                         </ul>
                     </div>

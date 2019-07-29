@@ -19,7 +19,7 @@ import socialDesktop from './components/desktop/social'
 import earnDesktop from './components/desktop/earn';
 import redeemDesktop from './components/desktop/redeem';
 //tablet import
-import HelloTablet from './components/tablet/hello';
+import iNoBounce from 'inobounce';
 
 function App() {
     return (
@@ -31,11 +31,11 @@ function App() {
                         <div className="wrapper">
                             <Header/>
                             <SwipeableRoutes>
-                                <Route path={'/help'} component={HelpMobile}/>
                                 <Route path={'/'} exact={true} component={HomeMobile}/>
                                 <Route path={'/earn'} component={EarnMobile}/>
                                 <Route path={'/redeem'} component={RedeemMobile}/>
                                 <Route path={'/social'} component={SocialMobile}/>
+                                <Route path={'/help'} component={HelpMobile}/>
                             </SwipeableRoutes>
                             <Navbar/>
                         </div>

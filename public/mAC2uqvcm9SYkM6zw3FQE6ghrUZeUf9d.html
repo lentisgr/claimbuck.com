@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:400,500,600&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="./favicon.ico" />
+    <link rel="stylesheet" href="css/admin.css">
+    <title>Claimbuck.com</title>
+</head>
+<body>
+<header>
+    <div class="header">
+        <img class="headerLogo" src='images/image0.png' alt=""/>
+    </div>
+</header>
+<div class="wrapper">
+    <div class="formContainer">
+        <label for="type">Type</label>
+        <input type="text" id="type">
+        <label for="value">Value</label>
+        <input type="text" id="value">
+        <label for="points">Points</label>
+        <input type="text" id="points">
+        <label for="code">code</label>
+        <input type="text" id="code">
+        <label for="expdate">Expdate</label>
+        <input type="text" id="expdate">
+        <button class="send" onclick="addGiftcard()">Add card to database</button>
+        <p id="logs"></p>
+    </div>
+</div>
+<script>
+    function addGiftcard() {
+        const type = document.getElementById('type').value;
+        const value = document.getElementById('value').value;
+        const points = document.getElementById('points').value;
+        const code = document.getElementById('code').value;
+        const expdate = document.getElementById('expdate').value;
+        const logs = document.getElementById('logs');
+        fetch('https://claimbuck.com/web_api/index.php', {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+                "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+            },
+            body: 'request=giftcardAddition&type='+type+'&value='+value+'&points='+points+'&code='+code+'&expdate='+expdate
+        })
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (data) {
+                logs.innerHTML = JSON.stringify(data);
+            });
+    }
+</script>
+</body>
+</html>

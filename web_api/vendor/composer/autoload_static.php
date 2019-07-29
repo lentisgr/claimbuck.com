@@ -6,17 +6,44 @@ namespace Composer\Autoload;
 
 class ComposerStaticInit0924a15f54cad6e3513e7bfee8aaab84
 {
+    public static $files = array (
+        '3109cb1a231dcd04bee1f9f620d46975' => __DIR__ . '/..' . '/paragonie/sodium_compat/autoload.php',
+    );
+
     public static $prefixLengthsPsr4 = array (
         'P' => 
         array (
+            'ParagonIE\\HiddenString\\' => 23,
+            'ParagonIE\\Halite\\' => 17,
+            'ParagonIE\\ConstantTime\\' => 23,
             'PHPMailer\\PHPMailer\\' => 20,
+        ),
+        'D' => 
+        array (
+            'Defuse\\Crypto\\' => 14,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
+        'ParagonIE\\HiddenString\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/paragonie/hidden-string/src',
+        ),
+        'ParagonIE\\Halite\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/paragonie/halite/src',
+        ),
+        'ParagonIE\\ConstantTime\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/paragonie/constant_time_encoding/src',
+        ),
         'PHPMailer\\PHPMailer\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
+        ),
+        'Defuse\\Crypto\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/defuse/php-encryption/src',
         ),
     );
 

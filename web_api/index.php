@@ -7,6 +7,9 @@ include ('page_functions/login_functions/login_page.php');
 include ('page_functions/register_functions/register.php');
 include ('page_functions/offerwall_functions/earn.php');
 include ('page_functions/redeem_functions/redeem_page.php');
+include ('page_functions/landingpage/landing_page.php');
+include ('page_functions/admin_functions/addcard.php');
+include ('page_functions/admin_functions/newKey.php');
 
 /*
  * This file acts as a router for all incoming API calls.
@@ -14,7 +17,6 @@ include ('page_functions/redeem_functions/redeem_page.php');
  * Then the auth token, username and type of request are verified to be filled in or a 'Forbidden' code will be thrown.
  * After that, the auth token is verified and then the user can access the methods.
  */
-
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
         if(!empty($_POST['request'])) {
             $request = $_POST['request'];
@@ -38,11 +40,10 @@ include ('page_functions/redeem_functions/redeem_page.php');
                     }
 
                 } elseif($request=='registerLoginGoogle') {
-                    if(!empty($_POST['email'])) {
-                        $email = filter_var($_POST['email'],FILTER_SANITIZE_STRING);
-                        echo (userRegisterGoogle($username,$email));
+                    if(!empty($_POST['id'])) {
+                        echo (userRegisterGoogle($username,$_POST['id']));
                     } else {
-                        BadHttpHeader(array('email'));
+                        BadHttpHeader(array('google id'));
                     }
 
                 } elseif($request=='userInfo') {
@@ -57,21 +58,35 @@ include ('page_functions/redeem_functions/redeem_page.php');
                     } else {
                         BadHttpHeader(array('auth token'));
                     }
+                } elseif($request=='sendGiftcard') {
+                    if(!empty($_POST['auth_token'])&&!empty($_POST['type'])&&!empty($_POST['points'])&&!empty($_POST['value'])) {
+                        $json = verifyAuth($username,$_POST['auth_token']);
+                        $json2 = json_decode($json);
+                        if($json2->message=='OK') {
+                            echo (sendGiftcard($username,$_POST['type'],$_POST['value'],$_POST['points']));
+                        } else {
+                            echo $json;
+                        }
+                    } else {
+                        BadHttpHeader(array('auth_token','type','points','value'));
+                    }
+                } elseif($request=='authCheck') {
+                    if(!empty($_POST['auth_token'])) {
+                        echo verifyAuth($username,$_POST['auth_token']);
+                    } else {
+                        BadHttpHeader(array('auth token'));
+                    }
                 } else {
                     BadRouterRequest();
                 }
-            } elseif($_POST['request']=='processVerification') {
+            } elseif($request=='processVerification') {
                 if (!empty($_POST['ver_token'])) {
                     echo (processVerification($_POST['ver_token']));
                 } else {
                     BadHttpHeader(array('verification token'));
                 }
-            } elseif($_POST['request']=='authCheck') {
-                if(!empty($_POST['auth_token'])) {
-                    echo verifyAuth($username,$_POST['auth_token']);
-                } else {
-                    BadHttpHeader(array('auth token'));
-                }
+            } elseif($request=='giftcardAddition') {
+                echo addCard($_POST['type'], $_POST['value'], $_POST['points'], $_POST['code'], $_POST['expdate']);
             } else {
                 BadHttpHeader(array('request','username'));
             }
@@ -83,13 +98,20 @@ include ('page_functions/redeem_functions/redeem_page.php');
           //Postback requests dont need returning errors as they are automated processes. Errors are handled by the postback sender.
           if($_GET['request']=='postbackAdgate') {
               if(!empty($_GET['tx_id'])&&!empty($_GET['user_id'])&&!empty($_GET['points'])&&!empty($_GET['usd_value'])&&!empty($_GET['offer_title'])) {
-                  addPoints($_GET['user_id'],$_GET['points']);
-                  sendWebhook('Adgate',$_GET['user_id'],$_GET['points'],$_GET['tx_id'],$_GET['usd_value'],$_GET['offer_title']);
+                  if(!postbackExists('Adgate',$_GET['tx_id'])) {
+                      addPoints($_GET['user_id'],$_GET['points']);
+                      sendWebhook('Adgate',$_GET['user_id'],$_GET['points'],$_GET['tx_id'],$_GET['usd_value'],$_GET['offer_title']);
+                      storePostback('Adgate',$_GET['user_id'],$_GET['points'],$_GET['tx_id'],$_GET['usd_value'],$_GET['offer_title']);
+                  }
               }
           } else if($_GET['request']=='postbackOffertoro'){
               if(!empty($_GET['tx_id'])&&!empty($_GET['user_id'])&&!empty($_GET['points'])&&!empty($_GET['usd_value'])&&!empty($_GET['offer_title'])) {
-                  addPoints($_GET['user_id'],$_GET['points']);
-                  sendWebhook('Offertoro',$_GET['user_id'],$_GET['points'],$_GET['tx_id'],$_GET['usd_value'],$_GET['offer_title']);
+                  if(!postbackExists('Offertoro',$_GET['tx_id'])) {
+                      addPoints($_GET['user_id'],$_GET['points']);
+                      sendWebhook('Offertoro',$_GET['user_id'],$_GET['points'],$_GET['tx_id'],$_GET['usd_value'],$_GET['offer_title']);
+                      storePostback('Offertoro',$_GET['user_id'],$_GET['points'],$_GET['tx_id'],$_GET['usd_value'],$_GET['offer_title']);
+                  }
+                  echo 1;
               }
           } else if($_GET['request']=='giftcardData') {
               if(!empty($_GET['auth_token'])&&!empty($_GET['username'])) {
@@ -97,12 +119,27 @@ include ('page_functions/redeem_functions/redeem_page.php');
                   $json2 = json_decode($json);
                   if($json2->message=='OK') {
                       echo (getGiftcards());
+                      $result = QB::table('giftcardtypes')->get();
+                      foreach ($result as $row) {
+                          $query = QB::table('giftcards')
+                              ->where('type', '=', $row->type)
+                              ->where('value', '=', $row->value)
+                              ->where('points', '=', $row->points)
+                              ->where('used', '=', 'false');
+                          if($query->count()==0) {
+                              QB::table('giftcardtypes')->where('id', $row->id)->update($data = array('instock' => 'false'));
+                          } else {
+                              QB::table('giftcardtypes')->where('id', $row->id)->update($data = array('instock' => 'true'));
+                          }
+                      }
                   } else {
                       echo $json;
                   }
               } else {
                   BadHttpHeader(array('auth token','username'));
               }
+          } else if($_GET['request']=='statistics') {
+              echo (landingPage());
           } else {
               BadRouterRequest();
           }

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="css/register.css">
     <link rel="stylesheet" href="css/login.css">
+    <link rel="shortcut icon" href="./favicon.ico" />
     <title>Login</title>
 </head>
 <body>
@@ -14,7 +15,7 @@
         <form action="" class="loginForm">
             <div class="email">
                 <label for="email">E-mail<span class="required">*</span></label>
-                <input type="text" id="email" name="email">
+                <input type="text" id="emailInput" name="email">
             </div>
 
             <div class="password">
@@ -31,17 +32,17 @@
 </div>
 
 <script>
-    let email = document.getElementById('email');
-    let password = document.getElementById('password');
-    let submit = document.getElementById('submit');
-    let error = document.getElementById('errorMessage');
+    const email = document.getElementById('emailInput');
+    const password = document.getElementById('password');
+    const submit = document.getElementById('submit');
+    const error = document.getElementById('errorMessage');
 
     function fetchCall() {
         if (email.value !== '' && password.value !== '') {
             email.style.borderColor = '#fff';
             password.style.borderColor = '#fff';
 
-            const loginFetch = async () => fetch('https://mintrexo-testarea.xyz/web_api/index.php', {
+            const loginFetch = async () => fetch('https://claimbuck.com/web_api/index.php', {
                 method: 'POST',
                 credentials: 'include',
                 headers: {
@@ -53,7 +54,6 @@
                     return response.json();
                 })
                 .then(function (data) {
-                    console.log(data);
                     checkMessage(data);
                 });
             loginFetch();

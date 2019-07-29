@@ -5,11 +5,11 @@ import Cookies from 'universal-cookie';
 const cookies = new Cookies();
 const cookieauthtoken = cookies.get('cookieauthtoken');
 const cookieusername = cookies.get('cookieusername');
-const username = null;
+const username = cookieusername;
 
 const Earn = () => {
 
-    const authCheck = async () => fetch('https://mintrexo-testarea.xyz/web_api/index.php', {
+    const authCheck = async () => fetch('https://claimbuck.com/web_api/index.php', {
         method: 'POST',
         headers: {
             "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"

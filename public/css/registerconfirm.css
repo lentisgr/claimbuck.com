@@ -3,7 +3,8 @@ body {
   font-family: Quicksand, sans-serif;
   width: 100vw;
   height: 100%;
-  background-color: #15DCF3; }
+  background-color: #15DCF3;
+}
 
 .container {
   background-color: white;
@@ -17,21 +18,29 @@ body {
   max-width: 700px;
   padding: 20px 20px 50px 20px;
   border-radius: 10px;
-  box-shadow: 3px 3px 16px 0px rgba(0, 0, 0, 0.5); }
-  .container button {
-    font-family: Quicksand, sans-serif;
-    font-weight: bold;
-    border-style: none;
-    color: white;
-    background-color: #2ECC71;
-    height: 40px;
-    width: 105px;
-    float: right;
-    margin: 0.2em 0 1.5em 0;
-    border-radius: 5px; }
+  box-shadow: 3px 3px 16px 0px rgba(0, 0, 0, 0.5);
+}
+.container button {
+  font-family: Quicksand, sans-serif;
+  font-weight: bold;
+  border-style: none;
+  color: white;
+  background-color: #2ECC71;
+  height: 40px;
+  width: 105px;
+  float: right;
+  margin: 0.2em 0 1.5em 0;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.container button:hover {
+  cursor: pointer;
+}
 
 @media screen and (max-width: 430px) {
   .container {
-    height: 12em; } }
+    height: 12em;
+  }
+}
 
 /*# sourceMappingURL=registerconfirm.css.map */

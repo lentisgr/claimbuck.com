@@ -6,6 +6,7 @@ const cookies = new Cookies();
 const Home = () => {
 
     const cookieauthtoken = cookies.get('cookieauthtoken');
+    const name = cookies.get('cookieusername').replace(/_/g, " ");
     const cookieusername = cookies.get('cookieusername');
     const [accountInfo, setAccountInfo] = useState([]);
 
@@ -13,7 +14,7 @@ const Home = () => {
         getUserData()
     }, []);
 
-    const getUserData = async () => fetch('https://mintrexo-testarea.xyz/web_api/index.php', {
+    const getUserData = async () => fetch('https://claimbuck.com/web_api/index.php', {
         method: 'POST',
         headers: {
             "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
@@ -29,7 +30,6 @@ const Home = () => {
 
     function checkMessage(data) {
         if (data.succeed === 'true') {
-            console.log(data);
             setAccountInfo(data);
         } else if (data.message === '4_2'||data.message === '4_1') {
             window.location = '/landingpage.html';
@@ -44,7 +44,7 @@ const Home = () => {
         return (
             <div className="desktopContainer">
                 <div className="desktopWelcomeMessage">
-                    Hey {cookieusername}, <br/> Welcome back!
+                    Hey {name}, <br/> Welcome back!
                 </div>
                 <div className="desktopInsights">
                     <div className="desktopInsightsContainer">
@@ -53,18 +53,14 @@ const Home = () => {
                         </div>
                         <div className="desktopInsightsContent">
                             <div className="desktopInsightsText">
-                                <ul>
-                                    <li>Balance:</li>
-                                    <li>Earnings:</li>
-                                    <li>Offers completed:</li>
-                                </ul>
+                                <p>Balance:</p>
+                                <p>Earnings:</p>
+                                <p>Offers completed:</p>
                             </div>
                             <div className="desktopInsightsData">
-                                <ul>
-                                    <li className={'balance'}>{accountInfo.points}</li>
-                                    <li>{accountInfo.total_points}</li>
-                                    <li>{accountInfo.completed_offers}</li>
-                                </ul>
+                                <p className={'balance'}>{accountInfo.points}</p>
+                                <p>{accountInfo.total_points}</p>
+                                <p>{accountInfo.completed_offers}</p>
                             </div>
                         </div>
                     </div>

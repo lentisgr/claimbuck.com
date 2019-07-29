@@ -1,12 +1,14 @@
 import React from "react";
 import './css/social.css';
 import Cookies from 'universal-cookie';
+import discordpng from '../../images/discordlogo.png';
+import twitterpng from '../../images/twitter.png';
 const cookies = new Cookies();
 
 const cookieauthtoken = cookies.get('cookieauthtoken');
 const cookieusername = cookies.get('cookieusername');
 
-const authCheck = async () => fetch('https://mintrexo-testarea.xyz/web_api/index.php', {
+const authCheck = async () => fetch('https://claimbuck.com/web_api/index.php', {
     method: 'POST',
     headers: {
         "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
@@ -56,8 +58,8 @@ class Social extends React.Component {
                     </div>
 
                     <div className="social" style={{marginTop : '50px'}}>
-                        <a href="https://discordapp.com/invite/nN4MHCT" target='_blank' rel='noopener noreferrer'><img src="https://www.claimbuck.com/imgs/discord.png" alt=""/></a>
-                        <a href="https://twitter.com/Claimbuck" target='_blank' rel='noopener noreferrer'><img src="https://www.claimbuck.com/imgs/twitter.png" alt=""/></a>
+                        <a href="https://discordapp.com/invite/nN4MHCT" target='_blank' rel='noopener noreferrer'><img src={discordpng} alt=""/></a>
+                        <a href="https://twitter.com/Claimbuck" target='_blank' rel='noopener noreferrer'><img src={twitterpng} alt=""/></a>
                     </div>
 
 

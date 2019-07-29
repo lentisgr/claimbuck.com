@@ -18,7 +18,7 @@ function verifyAuth($username,$authToken) {
 function returnUserdata($user) {
     $query = QB::table('users')->where('name', '=',$user);
     $result = $query->first();
-    $obj = array('points'=>$result->points,'total_points'=>$result->total_points,'completed_offers'=>$result->completed_offers);
+    $obj = array('points'=>$result->points,'total_points'=>$result->total_points,'completed_offers'=>$result->completed_offers,'succeed'=>'true','message'=>'OK');
     return json_encode($obj,JSON_FORCE_OBJECT);
 }
 

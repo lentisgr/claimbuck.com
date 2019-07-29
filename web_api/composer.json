@@ -5,6 +5,7 @@
     "ext-json": "*",
     "ext-curl": "*",
     "ext-openssl": "*",
-    "ext-simplexml": "*"
+    "ext-simplexml": "*",
+    "defuse/php-encryption": "^2.2"
   }
 }

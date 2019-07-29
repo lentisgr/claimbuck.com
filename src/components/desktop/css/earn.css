@@ -1,31 +1,32 @@
-.offerMenu {
-  padding-left: 15px;
-  display: flex;
-  justify-content: flex-start;
-  height: 60px;
-  background-color: #f6f6f6;
+@media only screen and (min-width: 992px) {
+  .offerMenu {
+    padding-left: 15px;
+    display: flex;
+    justify-content: flex-start;
+    height: 60px;
+    background-color: #f6f6f6;
+  }
+  .offerMenu button {
+    margin-right: 10px;
+    margin-left: 10px;
+    font-family: Quicksand, sans-serif;
+    font-weight: bold;
+    color: white;
+    margin-top: auto;
+    margin-bottom: auto;
+    height: 40px;
+    padding: 5px 20px 5px 20px;
+    border-radius: 5px;
+    background-color: #4169E1;
+    border-style: none;
+  }
+  .offerMenu button:hover {
+    cursor: pointer;
+  }
 }
-.offerMenu button {
-  margin-right: 10px;
-  margin-left: 10px;
-  font-family: Quicksand, sans-serif;
-  font-weight: bold;
-  color: dimgray;
-  margin-top: auto;
-  margin-bottom: auto;
-  height: 40px;
-  padding: 5px 20px 5px 20px;
-  border-radius: 5px;
-  background-color: #0DDDF3;
-  border-style: none;
-}
-.offerMenu button:hover {
-  cursor: pointer;
-}
-
 .offerContainer {
   overflow: hidden;
-  height: calc((100vh - 154px));
+  height: calc((100vh - 140px));
   width: 100vw;
   color: white;
   background-color: rgba(0, 0, 0, 0);

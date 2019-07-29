@@ -4,8 +4,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta charset="UTF-8">
     <meta name="google-signin-scope" content="profile email">
-    <meta name="google-signin-client_id" content="862605350357-m2pdiqpus2qh3crr45qp49mkbdbq3hdf.apps.googleusercontent.com">
+    <meta name="google-signin-client_id" content="862605350357-l9lst10m4oiqb29rnbjjn2keaful5tiv.apps.googleusercontent.com">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:400,500,600&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="./favicon.ico" />
     <link rel="stylesheet" href="css/landingpage.css">
     <title>Claimbuck.com</title>
 </head>
@@ -17,34 +19,110 @@
 </header>
 <div class="wrapper">
 
-    <div class="loginContainer">
-
-        <div class="button" onclick="window.location = 'login.html'">
-            <div class="imageDiv"><img src="images/emailicon.png" alt=""></div>
-            <p>Login with Email</p>
+    <div id="errorModal">
+        <div class="errorModalInner">
+            <img src="images/warning.png" alt="">
+            <h1>Google login failed!</h1>
+            <p>Your Google email has already been registered on our website!</p>
+            <p>Please try to login directly using email and password.</p>
+            <button class="errorModalClose" onclick="hideGoogleError()">Close</button>
         </div>
-
-        <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
-        <a href="register.html"><p>Don't have an account?<br>Click here.</p></a>
-
-
     </div>
+
+    <div class="statistics">
+        <div class="intro">
+            <h2>Welcome to claimbuck.com!</h2>
+            <p>On Claimbuck you can complete surveys to gain points and use these to redeem giftcards from Amazon, Steam, Roblox, Google Play and iTunes & App Store.</p>
+        </div>
+        <div class="data">
+            <h2>Here's some live statistics about the site!</h2>
+            <div class="dataContainer">
+                <div class="dataPiece">
+                    <h3>Registered users:</h3>
+                    <p id="r_users"></p>
+                </div>
+                <div class="dataPiece">
+                    <h3>Offers completed:</h3>
+                    <p id="o_completed"></p>
+                </div>
+                <div class="dataPiece">
+                    <h3>Giftcards redeemed:</h3>
+                    <p id="g_redeemed"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 
     <div class="loginContainerDesktop">
 
         <div class="button" onclick="window.location = 'login.html'">
-            <div class="imageDiv"><img src="images/emailicon.png" alt=""></div>
+            <div class="imageDiv"><img src="images/emailicon.png" alt="" style=""></div>
             <p>Login with Email</p>
         </div>
 
         <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
-        <a href="register.html"><p>Don't have an account?<br>Click here.</p></a>
+        <p class="googleWarning">Google sign in counts as registering</p>
+        <h3>Don't have an account?</h3>
+        <a class="registerButton" href="register.html"><p>Click here to register</p></a>
+        <p class="warning" style="color: red;">By registering you agree to our privacy policy which you can view <a href="https://docs.google.com/document/d/1XXOKHZn5EIrkzHHSh5w9gJ2ZE_8XxVp1oOihllLTFb4/edit">here</a> and our terms of service which you can view
+            <a href="https://docs.google.com/document/d/1-EdwdbsOvvLvrn8nbqfuCtONigju_mM6esUFE3B-bnA/edit">here</a>.</p>
+    </div>
+</div>
+<div class="loginContainer">
+    <div class="button" onclick="window.location = 'login.html'">
+        <div class="imageDiv"><img src="images/emailicon.png" alt=""></div>
+        <p>Login with Email</p>
+    </div>
 
-
+    <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+    <p class="googleWarning">Google sign in counts as registering</p>
+    <p class="warning" style="color: red;">By registering you agree to our privacy policy which you can view <a href="https://docs.google.com/document/d/1XXOKHZn5EIrkzHHSh5w9gJ2ZE_8XxVp1oOihllLTFb4/edit">here</a> and our terms of service which you can view
+        <a href="https://docs.google.com/document/d/1-EdwdbsOvvLvrn8nbqfuCtONigju_mM6esUFE3B-bnA/edit">here</a>.</p>
+    <h3>Don't have an account?</h3>
+    <a class="registerButton" href="register.html"><p>Click here to register</p></a>
+</div>
+<div id="Cookies">
+    <div class="CookiesInner">
+        <h2>Cookie disclaimer</h2>
+        <p>Hey there! On Claimbuck.com we use several cookies for the functionality of this website. In order to be able to access this website, you are required to accept the cookies.</p>
+        <p style="margin-top: 30px;">A full description of our cookies is displayed <a href="">here</a>.</p>
+        <div class="cookieButtonFlex">
+            <button class="acceptCookies" onclick="closeCookies()">I accept cookies</button>
+            <button class="refuseCookies" onclick="window.history.go(-1); return false;">I refuse cookies</button>
+        </div>
+        <p class="cookieWarning">By refusing our cookies, you will be sent back to the previous page.</p>
     </div>
 </div>
 
 <script async>
+    let cookieModal = document.getElementById('Cookies');
+    if(getCookie('cookieaccepted')===null) {
+        cookieModal.className = 'cookiesOn';
+    } else {
+        cookieModal.className = 'cookiesOff';
+    }
+
+    let r_users = document.getElementById("r_users");
+    let g_redeemed = document.getElementById("g_redeemed");
+    let o_completed = document.getElementById("o_completed");
+    const getStats = async () => fetch('https://claimbuck.com/web_api/index.php?request=statistics', {
+        method: 'GET',
+        headers: {
+            "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+        }
+    })
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            console.log(data);
+            r_users.innerHTML = data.reg_users;
+            g_redeemed.innerHTML = data.cards_redeemed;
+            o_completed.innerHTML = data.completed_offers;
+        });
+    getStats();
     function getCookie(name) {
         var nameEQ = name + "=";
         var ca = document.cookie.split(';');
@@ -61,19 +139,58 @@
 </script>
 
 <script>
-    function onSignIn(googleUser) {
+    function closeCookies() {
+        cookieModal.className = 'cookiesOff';
+        setCookie('cookieaccepted','true',30);
+    }
+    function onSignIn() {
         // Useful data for your client-side scripts:
-        var profile = googleUser.getBasicProfile();
-        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-        console.log('Full Name: ' + profile.getName());
-        console.log('Given Name: ' + profile.getGivenName());
-        console.log('Family Name: ' + profile.getFamilyName());
-        console.log("Image URL: " + profile.getImageUrl());
-        console.log("Email: " + profile.getEmail());
-
-        // The ID token you need to pass to your backend:
-        var id_token = googleUser.getAuthResponse().id_token;
-        console.log("ID Token: " + id_token);
+        const googleUser = gapi.auth2.getAuthInstance().currentUser.get();
+        const profile = googleUser.getBasicProfile();
+        getCookies(profile);
+        var auth2 = gapi.auth2.getAuthInstance();
+        auth2.disconnect();
+    }
+    function getCookies(profile) {
+        let email = '';
+        if(profile.getEmail()!==null) {
+            email = profile.getEmail();
+        }
+        fetch('https://claimbuck.com/web_api/index.php', {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+                "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+            },
+            body: 'request=registerLoginGoogle&username='+profile.getName()+'&id='+email
+        })
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (data) {
+                if(data.message==='4') {
+                    showGoogleError();
+                } else {
+                    location.reload();
+                }
+            });
+    }
+    function setCookie(name,value,days) {
+        var expires = "";
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days*24*60*60*1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+    }
+    function showGoogleError() {
+        const modal = document.getElementById('errorModal');
+        modal.className = 'modalShow';
+    }
+    function hideGoogleError() {
+        const modal = document.getElementById('errorModal');
+        modal.className = '';
     }
 </script>
 </body>

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="css/register.css">
+    <link rel="shortcut icon" href="./favicon.ico" />
     <title>Register</title>
 </head>
 <body>
@@ -13,7 +14,7 @@
         <form action="" class="loginForm">
             <div class="email">
                 <label for="email">E-mail<span class="required">*</span></label>
-                <input type="text" id="email" name="email">
+                <input type="text" id="emailInput" name="email">
             </div>
 
             <div class="username">
@@ -41,7 +42,7 @@
 </div>
 
 <script>
-    let email = document.getElementById('email');
+    let email = document.getElementById('emailInput');
     let username = document.getElementById('username');
     let password = document.getElementById('password');
     let passwordConfirm = document.getElementById('passwordConfirm');
@@ -70,7 +71,6 @@
                             return response.json();
                         })
                         .then(function (data) {
-                            console.log(data);
                             checkMessage(data);
                         });
                     exampleFetch2();
